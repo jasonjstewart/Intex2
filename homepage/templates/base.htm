@@ -46,7 +46,7 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 </ul>
-                <a class="btn btn-secondary my-2 my-sm-0" href="/account">Login</a>
+                <a class="btn btn-secondary my-2 my-sm-0" href="${ '/account/logout' if user.is_authenticated else '/account' }" >${ 'Logout' if user.is_authenticated else 'Login'}</a>
             </div>
         </nav>
 
