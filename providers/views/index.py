@@ -4,11 +4,8 @@ from datetime import datetime, timezone
 
 @view_function
 def process_request(request):
-    utc_time = datetime.utcnow()
+    print("\n\n\n\n\n")
+    print(request.dmp.page)
     context = {
-        # sent to index.html:
-        'utc_time': utc_time,
-        # sent to index.html and index.js:
-        jscontext('utc_epoch'): utc_time.timestamp(),
     }
     return request.dmp.render('index.html', context)

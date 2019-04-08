@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554764534.7778394
+_modified_time = 1554765583.1134434
 _enable_loop = True
 _template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/providers/templates/index.html'
 _template_uri = 'index.html'
@@ -50,7 +50,7 @@ def render_header(context,**pageargs):
         def header():
             return render_header(context)
         __M_writer = context.writer()
-        __M_writer('\r\n    <div class="form-box">\r\n        <div class="head">Search By Provider Name</div>\r\n        <form id="search-form" class="form-inline my-2 my-lg-0">\r\n            <div class="center">\r\n                <input id="search-box" class="form-control mr-sm-2" type="text" placeholder="Search">\r\n                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n')
+        __M_writer('\r\n    <div class="form-box">\r\n        <div class="head">Search By Provider Name</div>\r\n        <form id="search-form" class="form-inline my-2 my-lg-0">\r\n            <div class="center">\r\n                <input id="search-box" class="form-control mr-sm-2" type="text" placeholder="Provider Name">\r\n                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
