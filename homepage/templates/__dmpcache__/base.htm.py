@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554754763.5490172
+_modified_time = 1554752146.51133
 _enable_loop = True
 _template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -28,6 +28,7 @@ def render_body(context,**pageargs):
         def content():
             return render_content(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+
         user = context.get('user', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>\r\n            ')
@@ -40,6 +41,15 @@ def render_body(context,**pageargs):
         __M_writer('        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
         __M_writer('\r\n\r\n    </head>\r\n    <body>\r\n\r\n        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">\r\n            <a class="navbar-brand" href="/homepage">Website Name</a>\r\n            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">\r\n                <span class="navbar-toggler-icon"></span>\r\n            </button>\r\n\r\n            <div class="collapse navbar-collapse" id="navbarColor01">\r\n                <ul class="navbar-nav mr-auto">\r\n                <li class="nav-item ')
+
+        def content():
+            return render_content(context._locals(__M_locals))
+        __M_writer = context.writer()
+        __M_writer('<!DOCTYPE html>\n<html>\n    <meta charset="UTF-8">\n    <head>\n        <title>DMP</title>\n\n')
+        __M_writer('        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\n        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>\n        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>\n        <link id="theme" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css">\n        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">\n        \n        <script>\n\n        function lights(sheet, button, showButton) {\n            document.getElementById("theme").setAttribute("href", sheet);\n            button.style.display = \'none\';\n            showButton.style.display = \'block\';\n            \n        }\n\n        function initiate() {\n            var darkMode = document.getElementById("darkModeButton");\n            var lightMode = document.getElementById("lightModeButton");\n\n            darkMode.onclick = function () { lights("https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css", darkMode, lightMode) };\n            lightMode.onclick = function () { lights("https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css", lightMode, darkMode) };\n\n            darkMode.style.display = \'none\';\n            lightMode.style.display = \'block\';\n        }\n\n        window.onload = initiate;\n\n\n        </script>\n\n')
+        __M_writer('        <script src="/django_mako_plus/dmp-common.min.js"></script>\n        ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
+        __M_writer('\n\n    </head>\n    <body>\n\n        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">\n            <a class="navbar-brand" href="#">Opioid Tracker</a>\n            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">\n                <span class="navbar-toggler-icon"></span>\n            </button>\n\n            <div class="collapse navbar-collapse" id="navbarColor01">\n                <ul class="navbar-nav mr-auto">\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'index' else ''))
         __M_writer('">\r\n                    <a class="nav-link" href="#">Home</a>\r\n                </li>\r\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'providers' else ''))
@@ -47,6 +57,7 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'drugs' else ''))
         __M_writer('">\r\n                    <a class="nav-link" href="#">Drugs</a>\r\n                </li>\r\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'about' else ''))
+
         __M_writer('">\r\n                    <a class="nav-link" href="#">About</a>\r\n                </li>\r\n                </ul>\r\n                <a class="btn btn-secondary my-2 my-sm-0" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( '/account/logout' if user.is_authenticated else '/account' ))
         __M_writer('" >')
@@ -109,6 +120,8 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 10, "39": 14, "40": 22, "41": 23, "42": 23, "43": 36, "44": 36, "45": 39, "46": 39, "47": 42, "48": 42, "49": 45, "50": 45, "51": 49, "52": 49, "53": 49, "54": 49, "59": 57, "64": 63, "70": 8, "76": 8, "82": 54, "90": 54, "91": 55, "92": 55, "98": 61, "104": 61, "110": 104}}
+
+{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 9, "30": 42, "31": 43, "32": 43, "33": 56, "34": 56, "35": 59, "36": 59, "37": 62, "38": 62, "39": 65, "40": 65, "41": 76, "42": 76, "47": 83, "53": 81, "59": 81, "65": 59}}
+
 __M_END_METADATA
 """
