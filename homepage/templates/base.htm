@@ -23,7 +23,6 @@
             document.getElementById("theme").setAttribute("href", sheet);
             button.style.display = 'none';
             showButton.style.display = 'block';
-            
         }
 
         function initiate() {
@@ -72,6 +71,7 @@
                     <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights Off</button>
                     <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>
                     <a class="btn btn-secondary my-2 my-sm-0" href="${ '/account/logout' if user.is_authenticated else '/account' }" >${ 'Logout' if user.is_authenticated else 'Login'}</a>
+
             </div>
         </nav>
 
