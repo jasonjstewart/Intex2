@@ -87,8 +87,17 @@ WSGI_APPLICATION = 'Intex.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'Intex2019',
+        'HOST': 'intex2019.database.windows.net',
+        'PORT': '',
+        'USER': 'Intex2019@intex2019',
+        'PASSWORD': 'Temporary2019',      
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
+ 
+
     }
 }
 
