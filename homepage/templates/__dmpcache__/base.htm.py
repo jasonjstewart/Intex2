@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554748569.0645282
+_modified_time = 1554754763.5490172
 _enable_loop = True
 _template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,15 +19,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def content():
-            return render_content(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
         self = context.get('self', UNDEFINED)
-        def header():
-            return render_header(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        def header():
+            return render_header(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        user = context.get('user', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>\r\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -46,7 +47,11 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'drugs' else ''))
         __M_writer('">\r\n                    <a class="nav-link" href="#">Drugs</a>\r\n                </li>\r\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'about' else ''))
-        __M_writer('">\r\n                    <a class="nav-link" href="#">About</a>\r\n                </li>\r\n                </ul>\r\n                <a class="btn btn-secondary my-2 my-sm-0" href="/account">Login</a>\r\n            </div>\r\n        </nav>\r\n\r\n        <header>\r\n            ')
+        __M_writer('">\r\n                    <a class="nav-link" href="#">About</a>\r\n                </li>\r\n                </ul>\r\n                <a class="btn btn-secondary my-2 my-sm-0" href="')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( '/account/logout' if user.is_authenticated else '/account' ))
+        __M_writer('" >')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'Logout' if user.is_authenticated else 'Login'))
+        __M_writer('</a>\r\n            </div>\r\n        </nav>\r\n\r\n        <header>\r\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'header'):
             context['self'].header(**pageargs)
         
@@ -77,10 +82,10 @@ def render_title(context,**pageargs):
 def render_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        self = context.get('self', UNDEFINED)
         def header():
             return render_header(context)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n                <img src="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
@@ -104,6 +109,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "32": 2, "37": 10, "38": 14, "39": 22, "40": 23, "41": 23, "42": 36, "43": 36, "44": 39, "45": 39, "46": 42, "47": 42, "48": 45, "49": 45, "54": 57, "59": 63, "65": 8, "71": 8, "77": 54, "85": 54, "86": 55, "87": 55, "93": 61, "99": 61, "105": 99}}
+{"filename": "C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 10, "39": 14, "40": 22, "41": 23, "42": 23, "43": 36, "44": 36, "45": 39, "46": 39, "47": 42, "48": 42, "49": 45, "50": 45, "51": 49, "52": 49, "53": 49, "54": 49, "59": 57, "64": 63, "70": 8, "76": 8, "82": 54, "90": 54, "91": 55, "92": 55, "98": 61, "104": 61, "110": 104}}
 __M_END_METADATA
 """

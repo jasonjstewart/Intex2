@@ -9,4 +9,4 @@ def process_request(request):
     logout(request)
 
     #render the template
-    return redirect('/account/login')
+    return request.dmp.render('logout.html')

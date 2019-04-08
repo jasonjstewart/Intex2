@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554752947.07705
+_modified_time = 1554755408.935217
 _enable_loop = True
 _template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/account/templates/index.html'
 _template_uri = 'index.html'
@@ -30,12 +30,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        self = context.get('self', UNDEFINED)
         def header():
             return render_header(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'header'):
@@ -56,12 +56,12 @@ def render_body(context,**pageargs):
 def render_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        self = context.get('self', UNDEFINED)
         def header():
             return render_header(context)
         form = context.get('form', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n    <div class="form-box">\r\n        <div class="head">Login to Prescription Tracker</div>\r\n        <form id="login-form" method="POST">\r\n            <table>\r\n            ')
+        __M_writer('\r\n    <div class="form-box">\r\n        <div class="head">Login to<br>Prescription Tracker</div>\r\n        <form id="login-form" method="POST">\r\n            <table>\r\n            ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( form.as_table() ))
         __M_writer('\r\n            </table>\r\n            <input type="submit" class="btn btn-primary" value="Login"/>\r\n        </form>\r\n    </div>\r\n')
         return ''
