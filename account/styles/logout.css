@@ -27,31 +27,3 @@ form#login-form {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 }
-
-#login_redirect {
-    background: #868e96;
-    border:none;
-    border-radius: 2px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin: 5px 0;
-    outline: medium none;
-    overflow: hidden;
-    padding: 10px;
-    text-transform: uppercase;
-    transition: all 0.15s ease-in-out 0s;
-    width: 100%;
-    box-shadow: 0 1px 2px 0px rgba(0,0,0,0.16), 0 1px 2px 0px rgba(0,0,0,0.23);
-  }
-  #login_redirect:hover {
-    background: #343a40;
-    box-shadow: 0 2px 4px 0px rgba(0,0,0,0.16), 0 2px 4px 0px rgba(0,0,0,0.23);
-  }
-
-  #login_redirect:focus {
-    background: #343a40;
-    box-shadow: 0 2px 4px 0px rgba(0,0,0,0.16), 0 2px 4px 0px rgba(0,0,0,0.23);
-  }
