@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554748300.0566292
+_modified_time = 1554760741.7456148
 _enable_loop = True
 _template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/account/templates/app_base.htm'
 _template_uri = 'app_base.htm'
@@ -30,12 +30,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        def title():
+            return render_title(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
         def header():
             return render_header(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -63,7 +63,7 @@ def render_title(context,**pageargs):
         def title():
             return render_title(context)
         __M_writer = context.writer()
-        __M_writer('\r\n    Login\r\n')
+        __M_writer('\r\nOpioid Tracker | Login\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()

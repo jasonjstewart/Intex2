@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554755429.3792737
+_modified_time = 1554758520.4937372
 _enable_loop = True
 _template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/account/templates/logout.html'
 _template_uri = 'logout.html'
@@ -57,7 +57,7 @@ def render_header(context,**pageargs):
         def header():
             return render_header(context)
         __M_writer = context.writer()
-        __M_writer('\r\n    <div class="form-box">\r\n        <div class="head">Login to<br>Prescription Tracker</div>\r\n        <form id="login-form" method="POST">\r\n            <p>You have been successfully logged out!</p>\r\n            <a id="login_redirect" href="/account/index" class="btn btn-primary">Login</a>\r\n        </form>\r\n    </div>\r\n')
+        __M_writer('\r\n    <div class="form-box">\r\n        <div class="head">Login to<br>Prescription Tracker</div>\r\n        <form id="login-form" method="POST">\r\n            <p>You have been successfully logged out!</p>\r\n            <a id="login_redirect" href="/account/index" class="btn btn-info btn-block btn-lg">Login</a>\r\n        </form>\r\n    </div>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
