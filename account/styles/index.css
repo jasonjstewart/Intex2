@@ -1,0 +1,74 @@
+main {
+    text-align: center;
+}
+
+.form-box{
+    background: #fff;
+    margin: 30px auto;
+    max-width: 500px;
+    box-shadow: 0 3px 6px 0px rgba(0,0,0,0.16), 0 3px 6px 0px rgba(0,0,0,0.23);
+    border-radius: 30px;
+}
+
+form#login-form {
+    overflow: hidden;
+    position: relative;
+    padding: 40px;
+}
+
+.head {
+    color: #fff;
+    font-size: 34px;
+    font-weight: normal;
+    padding: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+    background: rgb(45, 141, 137);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+input {
+    padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin: 10px;
+    margin-top: 5px;
+}
+
+input:focus {
+    border-color:#333;
+}
+
+table {
+    margin: 0 auto;
+}
+
+input.btn[type="submit"] {
+    background: #868e96;
+    border:none;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 5px 0;
+    outline: medium none;
+    overflow: hidden;
+    padding: 10px;
+    text-transform: uppercase;
+    transition: all 0.15s ease-in-out 0s;
+    width: 100%;
+    box-shadow: 0 1px 2px 0px rgba(0,0,0,0.16), 0 1px 2px 0px rgba(0,0,0,0.23);
+  }
+  input.btn[type="submit"]:hover {
+    background: #343a40;
+    box-shadow: 0 2px 4px 0px rgba(0,0,0,0.16), 0 2px 4px 0px rgba(0,0,0,0.23);
+  }
+
+  input.btn[type="submit"]:focus{
+    background: #343a40;
+    box-shadow: 0 2px 4px 0px rgba(0,0,0,0.16), 0 2px 4px 0px rgba(0,0,0,0.23);
+  }

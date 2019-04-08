@@ -3,7 +3,11 @@
 <html>
     <meta charset="UTF-8">
     <head>
-        <title>DMP</title>
+        <title>
+            <%block name="title">
+            DMP
+            </%block>
+        </title>
 
         ## add any site-wide scripts or CSS here; for example, jquery:
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -45,7 +49,6 @@
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Opioid Tracker</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -64,17 +67,19 @@
                 <li class="nav-item ${ 'active' if request.dmp.page == 'about' else ''}">
                     <a class="nav-link" href="#">About</a>
                 </li>
-                </ul>               
-                
-                    <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none">Lights On</button>
+                </ul>        
                     <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights Off</button>
-                    <button class="btn btn-secondary" style="margin-left: 10px;" type="submit">Login</button>
+                    <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>
+                    <a class="btn btn-secondary my-2 my-sm-0" href="${ '/account/logout' if user.is_authenticated else '/account' }" >${ 'Logout' if user.is_authenticated else 'Login'}</a>
+
             </div>
         </nav>
 
         <header>
-            <img src="${ STATIC_URL }homepage/media/python.png" alt="python" />
-            <div class="title">Welcome to <br/> DMP!</div>
+            <%block name="header">
+                <img src="${ STATIC_URL }homepage/media/python.png" alt="python" />
+                <div class="title">Welcome to <br/> DMP!</div>
+            </%block>
         </header>
 
         <main>
