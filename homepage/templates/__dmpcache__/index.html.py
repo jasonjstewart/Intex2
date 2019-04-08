@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554757297.8927581
+_modified_time = 1554758813.1685038
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/index.html'
 _template_uri = 'index.html'
@@ -50,7 +50,7 @@ def render_content(context,**pageargs):
         def content():
             return render_content(context)
         __M_writer = context.writer()
-        __M_writer('\n    <div class="card-deck">\n        <div class="card border-info">\n            <div class="card-body"> \n            \n                <i class="fas fa-user-md fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <button class="btn btn-info btn-lg btn-block" type="submit">Providers</button>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n\n                <i class="fas fa-prescription-bottle fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <button class="btn btn-info btn-lg btn-block" type="submit">Drugs</button>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n            \n                <i class="fas fa-info fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <button class="btn btn-info btn-lg btn-block" type="submit">About</button>\n                \n            </div>\n        </div>\n    </div>\n')
+        __M_writer('\n    <div class="card-deck">\n        <div class="card border-info">\n            <div class="card-body"> \n            \n                <i class="fas fa-user-md fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <a href="/providers" class="btn btn-info btn-lg btn-block" role="button">Providers</a>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n\n                <i class="fas fa-prescription-bottle fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <a href="/drugs" class="btn btn-info btn-lg btn-block" role="button">Drugs</a>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n            \n                <i class="fas fa-info fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <a href="/about" class="btn btn-info btn-lg btn-block" role="button">About</a>\n                \n            </div>\n        </div>\n    </div>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()

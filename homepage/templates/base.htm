@@ -56,16 +56,16 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item ${ 'active' if request.dmp.page == 'index' else ''}">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.page == 'providers' else ''}">
-                    <a class="nav-link" href="#">Providers</a>
+                    <a class="nav-link" href="/providers">Providers</a>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.page == 'drugs' else ''}">
-                    <a class="nav-link" href="#">Drugs</a>
+                    <a class="nav-link" href="/drugs">Drugs</a>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.page == 'about' else ''}">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/about">About</a>
                 </li>
                 </ul>        
                     <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>

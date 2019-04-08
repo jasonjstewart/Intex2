@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554757536.8888419
+_modified_time = 1554758583.1757393
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,14 +19,14 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        request = context.get('request', UNDEFINED)
-        user = context.get('user', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        user = context.get('user', UNDEFINED)
         self = context.get('self', UNDEFINED)
-        def title():
-            return render_title(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
         def header():
             return render_header(context._locals(__M_locals))
         __M_writer = context.writer()
@@ -41,13 +41,13 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
         __M_writer('\n\n    </head>\n    <body>\n\n        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">\n            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">\n                <span class="navbar-toggler-icon"></span>\n            </button>\n\n            <div class="collapse navbar-collapse" id="navbarColor01">\n                <ul class="navbar-nav mr-auto">\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'index' else ''))
-        __M_writer('">\n                    <a class="nav-link" href="#">Home</a>\n                </li>\n                <li class="nav-item ')
+        __M_writer('">\n                    <a class="nav-link" href="/">Home</a>\n                </li>\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'providers' else ''))
-        __M_writer('">\n                    <a class="nav-link" href="#">Providers</a>\n                </li>\n                <li class="nav-item ')
+        __M_writer('">\n                    <a class="nav-link" href="/providers">Providers</a>\n                </li>\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'drugs' else ''))
-        __M_writer('">\n                    <a class="nav-link" href="#">Drugs</a>\n                </li>\n                <li class="nav-item ')
+        __M_writer('">\n                    <a class="nav-link" href="/drugs">Drugs</a>\n                </li>\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'about' else ''))
-        __M_writer('">\n                    <a class="nav-link" href="#">About</a>\n                </li>\n                </ul>        \n                    <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>\n                    <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>\n                    <a class="btn btn-secondary my-2 my-sm-0" style="margin-left: 10px;" href="')
+        __M_writer('">\n                    <a class="nav-link" href="/about">About</a>\n                </li>\n                </ul>        \n                    <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>\n                    <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>\n                    <a class="btn btn-secondary my-2 my-sm-0" style="margin-left: 10px;" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( '/account/logout' if user.is_authenticated else '/account' ))
         __M_writer('" >')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'Logout' if user.is_authenticated else 'Login'))
@@ -83,9 +83,9 @@ def render_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def header():
             return render_header(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n                <img src="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
