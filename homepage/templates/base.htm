@@ -53,8 +53,10 @@
         </nav>
 
         <header>
-            <img src="${ STATIC_URL }homepage/media/python.png" alt="python" />
-            <div class="title">Welcome to <br/> DMP!</div>
+            <%block name="header">
+                <img src="${ STATIC_URL }homepage/media/python.png" alt="python" />
+                <div class="title">Welcome to <br/> DMP!</div>
+            </%block>
         </header>
 
         <main>
