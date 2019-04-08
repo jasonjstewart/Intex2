@@ -1,8 +1,36 @@
 <%inherit file="base.htm" />
 
 <%block name="content">
-    <div class="content">
-        <h3>Congratulations -- you've successfully created a new DMP app!</h3>
-        <h4 class="utc-time">Current time in UTC: ${ utc_time }</h4>
+    <div class="card-deck">
+        <div class="card border-info">
+            <div class="card-body"> 
+            
+                <i class="fas fa-user-md fa-9x" style="color: #18BC9C"></i>
+                <br />
+                <br />
+                <button class="btn btn-info btn-lg btn-block" type="submit">Providers</button>
+
+            </div>
+        </div>
+        <div class="card border-info">
+            <div class="card-body">
+
+                <i class="fas fa-prescription-bottle fa-9x" style="color: #18BC9C"></i>
+                <br />
+                <br />
+                <button class="btn btn-info btn-lg btn-block" type="submit">Drugs</button>
+
+            </div>
+        </div>
+        <div class="card border-info">
+            <div class="card-body">
+            
+                <i class="fas fa-info fa-9x" style="color: #18BC9C"></i>
+                <br />
+                <br />
+                <button class="btn btn-info btn-lg btn-block" type="submit">About</button>
+                
+            </div>
+        </div>
     </div>
 </%block>

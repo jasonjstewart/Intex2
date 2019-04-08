@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554732907.272325
+_modified_time = 1554745524.247257
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/index.html'
 _template_uri = 'index.html'
@@ -30,10 +30,8 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        utc_time = context.get('utc_time', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -49,14 +47,10 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        utc_time = context.get('utc_time', UNDEFINED)
         def content():
             return render_content(context)
-        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n    <div class="content">\n        <h3>Congratulations -- you\'ve successfully created a new DMP app!</h3>\n        <h4 class="utc-time">Current time in UTC: ')
-        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( utc_time ))
-        __M_writer('</h4>\n    </div>\n')
+        __M_writer('\n    <div class="card-deck">\n        <div class="card border-info">\n            <div class="card-body"> \n            \n                <i class="fas fa-user-md fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <button class="btn btn-info btn-lg btn-block" type="submit">Providers</button>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n\n                <i class="fas fa-prescription-bottle fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <button class="btn btn-info btn-lg btn-block" type="submit">Drugs</button>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n            \n                <i class="fas fa-info fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <button class="btn btn-info btn-lg btn-block" type="submit">About</button>\n                \n            </div>\n        </div>\n    </div>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -64,6 +58,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 8, "49": 3, "57": 3, "58": 6, "59": 6, "65": 59}}
+{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "36": 1, "41": 36, "47": 3, "53": 3, "59": 53}}
 __M_END_METADATA
 """
