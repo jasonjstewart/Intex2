@@ -8,9 +8,14 @@ from django.http import HttpResponseRedirect
 
 class User (AbstractUser):
 
-    birthDate = models.DateTimeField(null=True)
-    favcolor = models.TextField(null=True)
+    USER_TYPE_CHOICES = (
+        (0, 'Default'),
+        (1, 'Data Clerk'),
+        (2, 'Prescriber'),
+        (3, 'Health Official'),
+        (4, 'Admin')
+    )
 
-
+    user_type =models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES, default='0')
 
         # return the Sale object

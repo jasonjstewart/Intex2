@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554830139.6323233
+_modified_time = 1554836650.8808484
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/index.html'
 _template_uri = 'index.html'
@@ -30,12 +30,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def content():
-            return render_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         self = context.get('self', UNDEFINED)
         def header():
             return render_header(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'header'):
@@ -56,10 +56,10 @@ def render_body(context,**pageargs):
 def render_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         self = context.get('self', UNDEFINED)
         def header():
             return render_header(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n                <img src="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
@@ -75,7 +75,7 @@ def render_content(context,**pageargs):
         def content():
             return render_content(context)
         __M_writer = context.writer()
-        __M_writer('\n    <div class="card-deck">\n        <div class="card border-info">\n            <div class="card-body"> \n            \n                <i class="fas fa-user-md fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <a href="/providers" class="btn btn-primary btn-lg btn-block" role="button">Providers</a>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n\n                <i class="fas fa-prescription-bottle fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <a href="/drugs" class="btn btn-primary btn-lg btn-block" role="button">Drugs</a>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n            \n                <i class="fas fa-info fa-9x" style="color: #18BC9C"></i>\n                <br />\n                <br />\n                <a href="/about" class="btn btn-primary btn-lg btn-block" role="button">About</a>\n                \n            </div>\n        </div>\n    </div>\n')
+        __M_writer('\n    <div class="card-deck">\n        <div class="card border-info">\n            <div class="card-body"> \n            \n                <i class="fas fa-user-md fa-9x" style="color: #E74C3C"></i>\n                <br />\n                <br />\n                <a href="/providers" class="btn btn-primary btn-lg btn-block" role="button">Providers</a>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n\n                <i class="fas fa-prescription-bottle fa-9x" style="color: #E74C3C"></i>\n                <br />\n                <br />\n                <a href="/drugs" class="btn btn-primary btn-lg btn-block" role="button">Drugs</a>\n\n            </div>\n        </div>\n        <div class="card border-info">\n            <div class="card-body">\n            \n                <i class="fas fa-info fa-9x" style="color: #E74C3C"></i>\n                <br />\n                <br />\n                <a href="/about" class="btn btn-primary btn-lg btn-block" role="button">About</a>\n                \n            </div>\n        </div>\n    </div>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
