@@ -1,0 +1,38 @@
+main {
+    text-align: center;
+}
+
+.form-box{
+    background: #fff;
+    margin: 30px auto;
+    max-width: 600px;
+    box-shadow: 0 3px 6px 0px rgba(0,0,0,0.16), 0 3px 6px 0px rgba(0,0,0,0.23);
+    border-radius: 30px;
+}
+
+form#search-form {
+    overflow: hidden;
+    position: relative;
+    padding: 40px;
+}
+
+.head {
+    color: #fff;
+    font-size: 34px;
+    font-weight: normal;
+    padding: 10px 50px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #18BC9C;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+#search-box {
+    border-color: #D1D2D4;
+}
+
+.center {
+    width: 100%;
+    text-align:center;
+}

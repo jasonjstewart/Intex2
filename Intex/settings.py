@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_mako_plus',
     'homepage',
     'account',
+    'providers',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Intex.wsgi.application'
+
+ALLOWED_HOSTS = [
+    'opiatetracker.co',
+    'www.opiatetracker.co',
+    'localhost',
+]
 
 
 # Database

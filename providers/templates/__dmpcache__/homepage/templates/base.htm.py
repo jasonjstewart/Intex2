@@ -5,10 +5,10 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554765577.520532
+_modified_time = 1554765583.1344216
 _enable_loop = True
 _template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm'
-_template_uri = 'base.htm'
+_template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
 import django.utils.html
@@ -109,6 +109,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 9, "39": 13, "40": 45, "41": 46, "42": 46, "43": 58, "44": 58, "45": 61, "46": 61, "47": 64, "48": 64, "49": 67, "50": 67, "51": 73, "52": 73, "53": 73, "54": 73, "59": 82, "64": 88, "70": 7, "76": 7, "82": 79, "90": 79, "91": 80, "92": 80, "98": 86, "104": 86, "110": 104}}
+{"filename": "C:/Users/Jaxon/desktop/intex2/Intex2/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 9, "39": 13, "40": 45, "41": 46, "42": 46, "43": 58, "44": 58, "45": 61, "46": 61, "47": 64, "48": 64, "49": 67, "50": 67, "51": 73, "52": 73, "53": 73, "54": 73, "59": 82, "64": 88, "70": 7, "76": 7, "82": 79, "90": 79, "91": 80, "92": 80, "98": 86, "104": 86, "110": 104}}
 __M_END_METADATA
 """

@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554760741.7456148
+_modified_time = 1554760681.1929958
 _enable_loop = True
-_template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/account/templates/app_base.htm'
+_template_filename = 'C:/Users/Jaxon/desktop/intex2/Intex2/providers/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -52,6 +52,7 @@ def render_body(context,**pageargs):
             context['self'].content(**pageargs)
         
 
+        __M_writer('\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -63,7 +64,7 @@ def render_title(context,**pageargs):
         def title():
             return render_title(context)
         __M_writer = context.writer()
-        __M_writer('\r\nOpioid Tracker | Login\r\n')
+        __M_writer('\r\n    Opioid Tracker | Providers\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -95,6 +96,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Jaxon/desktop/intex2/Intex2/account/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 2, "45": 6, "50": 10, "60": 4, "66": 4, "72": 8, "78": 8, "84": 12, "90": 12, "96": 90}}
+{"filename": "C:/Users/Jaxon/desktop/intex2/Intex2/providers/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 2, "45": 6, "50": 10, "55": 14, "61": 4, "67": 4, "73": 8, "79": 8, "85": 12, "91": 12, "97": 91}}
 __M_END_METADATA
 """
