@@ -10,7 +10,7 @@ main {
     border-radius: 30px;
 }
 
-form#login-form {
+form#signup-form {
     overflow: hidden;
     position: relative;
     padding: 40px;

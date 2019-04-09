@@ -1,5 +1,10 @@
 <%inherit file="base.htm" />
 
+<%block name="header">
+
+                <img src="${ STATIC_URL }homepage/media/drugs.png" alt="drugs" style="height: 230px;" />
+                <div class="title">Welcome to <br /> Prescription Tracker</div>
+</%block>
 <%block name="content">
     <div class="card-deck">
         <div class="card border-info">
@@ -8,7 +13,7 @@
                 <i class="fas fa-user-md fa-9x" style="color: #18BC9C"></i>
                 <br />
                 <br />
-                <a href="/providers" class="btn btn-info btn-lg btn-block" role="button">Providers</a>
+                <a href="/providers" class="btn btn-primary btn-lg btn-block" role="button">Providers</a>
 
             </div>
         </div>
@@ -18,7 +23,7 @@
                 <i class="fas fa-prescription-bottle fa-9x" style="color: #18BC9C"></i>
                 <br />
                 <br />
-                <a href="/drugs" class="btn btn-info btn-lg btn-block" role="button">Drugs</a>
+                <a href="/drugs" class="btn btn-primary btn-lg btn-block" role="button">Drugs</a>
 
             </div>
         </div>
@@ -28,7 +33,7 @@
                 <i class="fas fa-info fa-9x" style="color: #18BC9C"></i>
                 <br />
                 <br />
-                <a href="/about" class="btn btn-info btn-lg btn-block" role="button">About</a>
+                <a href="/about" class="btn btn-primary btn-lg btn-block" role="button">About</a>
                 
             </div>
         </div>

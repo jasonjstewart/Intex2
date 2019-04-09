@@ -5,14 +5,14 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554828420.4197202
+_modified_time = 1554828556.4995496
 _enable_loop = True
-_template_filename = '/mnt/c/Users/rskal/IS413/Intex/account/templates/index.html'
-_template_uri = 'index.html'
+_template_filename = '/mnt/c/Users/rskal/IS413/Intex/account/templates/signup.html'
+_template_uri = 'signup.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
 import django.utils.html
-_exports = ['header', 'content']
+_exports = ['header']
 
 
 def _mako_get_namespace(context, name):
@@ -30,8 +30,6 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def content():
-            return render_content(context._locals(__M_locals))
         form = context.get('form', UNDEFINED)
         self = context.get('self', UNDEFINED)
         def header():
@@ -42,12 +40,6 @@ def render_body(context,**pageargs):
             context['self'].header(**pageargs)
         
 
-        __M_writer('\n\n')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
-            context['self'].content(**pageargs)
-        
-
-        __M_writer('\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -61,21 +53,9 @@ def render_header(context,**pageargs):
         def header():
             return render_header(context)
         __M_writer = context.writer()
-        __M_writer('\n    <div class="form-box">\n        <div class="head">Login to<br>Prescription Tracker</div>\n        <form id="login-form" method="POST">\n            <table>\n            ')
+        __M_writer('\n    <div class="form-box">\n        <div class="head">Sign Up</div>\n        <form id="signup-form" method="POST">\n            <table>\n                ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( form.as_table() ))
-        __M_writer('\n            </table>\n            <br />\n            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login"/>\n        </form>\n    </div>\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content():
-            return render_content(context)
-        __M_writer = context.writer()
-        __M_writer('\n\n')
+        __M_writer('\n            </table>\n            <br />\n            <input type="submit" class="btn btn-info btn-block btn-lg" value="Sign Up"/>\n        </form>\n    </div>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -83,6 +63,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/mnt/c/Users/rskal/IS413/Intex/account/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "45": 14, "50": 18, "56": 3, "64": 3, "65": 8, "66": 8, "72": 16, "78": 16, "84": 78}}
+{"filename": "/mnt/c/Users/rskal/IS413/Intex/account/templates/signup.html", "uri": "signup.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "48": 3, "56": 3, "57": 8, "58": 8, "64": 58}}
 __M_END_METADATA
 """

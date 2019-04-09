@@ -23,7 +23,7 @@ form#login-form {
     padding: 50px 0;
     text-align: center;
     text-transform: uppercase;
-    background: rgb(45, 141, 137);
+    background: #375a7f;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 }
