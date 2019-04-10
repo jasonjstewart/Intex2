@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554936960.7839777
+_modified_time = 1554938120.3755176
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,23 +19,25 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def header():
-            return render_header(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
+        user = context.get('user', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        user = context.get('user', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        def header():
+            return render_header(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\n<html>\n    <meta charset="UTF-8">\n    <head>\n        <title>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
             context['self'].title(**pageargs)
         
 
-        __M_writer('\n        </title>\n\n')
+        __M_writer('\n        </title>\n\n        <link rel="shortcut icon" type="image/png" href="')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
+        __M_writer('homepage/media/drugs.png"/>\n\n')
         __M_writer('        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\n        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>\n        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>\n        <link id="theme" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css">\n        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">\n        \n        <script>\n\n        function lights(sheet, button, showButton) {\n            document.getElementById("theme").setAttribute("href", sheet);\n            button.style.display = \'none\';\n            showButton.style.display = \'block\';\n        }\n\n        function initiate() {\n            var darkMode = document.getElementById("darkModeButton");\n            var lightMode = document.getElementById("lightModeButton");\n\n            darkMode.onclick = function () { lights("https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css", darkMode, lightMode) };\n            lightMode.onclick = function () { lights("https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css", lightMode, darkMode) };\n\n            darkMode.style.display = \'block\';\n            lightMode.style.display = \'none\';\n        }\n\n        window.onload = initiate;\n\n\n        </script>\n\n')
         __M_writer('        <script src="/django_mako_plus/dmp-common.min.js"></script>\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
@@ -115,6 +117,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 9, "39": 13, "40": 45, "41": 46, "42": 46, "43": 56, "44": 56, "45": 62, "46": 62, "47": 65, "48": 65, "49": 68, "50": 68, "51": 71, "52": 71, "53": 75, "54": 75, "55": 78, "56": 78, "57": 78, "58": 78, "59": 78, "60": 78, "61": 79, "62": 79, "63": 80, "64": 80, "69": 86, "74": 93, "80": 7, "86": 7, "92": 85, "98": 85, "104": 91, "110": 91, "116": 110}}
+{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 9, "39": 12, "40": 12, "41": 15, "42": 47, "43": 48, "44": 48, "45": 58, "46": 58, "47": 64, "48": 64, "49": 67, "50": 67, "51": 70, "52": 70, "53": 73, "54": 73, "55": 77, "56": 77, "57": 80, "58": 80, "59": 80, "60": 80, "61": 80, "62": 80, "63": 81, "64": 81, "65": 82, "66": 82, "71": 88, "76": 95, "82": 7, "88": 7, "94": 87, "100": 87, "106": 93, "112": 93, "118": 112}}
 __M_END_METADATA
 """
