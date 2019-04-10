@@ -52,16 +52,20 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+              <a class="navbar-brand" href="/">
+                    <img src="${ STATIC_URL }homepage/media/drugs.png" width="50" height="50" alt="">
+                Opioid Tracker
+                </a>
 
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item ${ 'active' if request.dmp.page == 'index' else ''}">
+                <li class="nav-item ${ 'active' if request.dmp.app == 'homepage' and request.dmp.page == 'index' else ''}">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item ${ 'active' if request.dmp.page == 'providers' else ''}">
+                <li class="nav-item ${ 'active' if request.dmp.app == 'providers' else ''}">
                     <a class="nav-link" href="/providers">Providers</a>
                 </li>
-                <li class="nav-item ${ 'active' if request.dmp.page == 'drugs' else ''}">
+                <li class="nav-item ${ 'active' if request.dmp.app == 'drugs' else ''}">
                     <a class="nav-link" href="/drugs">Drugs</a>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.page == 'about' else ''}">
@@ -81,13 +85,15 @@
         </header>
 
         <main>
-            <%block name="content">
-                Site content goes here in sub-templates.
-            </%block>
+            <div id = content>
+                <%block name="content">
+                    Site content goes here in sub-templates.
+                </%block>
+            </div>
         </main>
 
         <footer>
-            <div class="footer">
+            <div class="footer text-primary">
                 <p>Powered by SCRM Consulting</p>
                 <p>Copyright &copy; 2019</p>
             </div>
