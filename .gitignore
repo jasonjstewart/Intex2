@@ -5,6 +5,7 @@
 # Byte-compiled / optimized / DLL files
 __dmpcache__/
 __pycache__/
+static/
 *.py[cod]
 *$py.class
 

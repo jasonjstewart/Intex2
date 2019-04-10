@@ -26,9 +26,13 @@ SECRET_KEY = '(=+jcrqk9_dxsgqq%u!2oq1ycx0^78(v_zs%izzmcq-e&h+*d_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 AUTH_USER_MODEL = 'account.customUser'
+
+ALLOWED_HOSTS = [
+    'opioidtracker.co',
+    'www.opioidtracker.co',
+    'localhost',
+]
 
 
 # Application definition
@@ -84,12 +88,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Intex.wsgi.application'
-
-ALLOWED_HOSTS = [
-    'opioidtracker.co',
-    'www.opioidtracker.co',
-    'localhost',
-]
 
 
 # Database
