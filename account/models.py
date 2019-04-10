@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 
 # Create your models here.
 
-class User (AbstractUser):
+class customUser (AbstractUser):
 
     USER_TYPE_CHOICES = (
         (0, 'Default'),
