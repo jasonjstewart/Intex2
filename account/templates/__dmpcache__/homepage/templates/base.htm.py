@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554830087.8494546
+_modified_time = 1554919361.9522583
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -22,13 +22,12 @@ def render_body(context,**pageargs):
         def title():
             return render_title(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def header():
-            return render_header(context._locals(__M_locals))
-        user = context.get('user', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        def header():
+            return render_header(context._locals(__M_locals))
         self = context.get('self', UNDEFINED)
+        user = context.get('user', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\n<html>\n    <meta charset="UTF-8">\n    <head>\n        <title>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -63,7 +62,7 @@ def render_body(context,**pageargs):
             context['self'].content(**pageargs)
         
 
-        __M_writer('\n        </main>\n\n        <footer>\n            <div><a href="http://django-mako-plus.readthedocs.io/">Online Documentation</a></div>\n            <div><a href="https://github.com/doconix/django-mako-plus/">DMP on GitHub</a></div>\n        </footer>\n\n    </body>\n</html>\n')
+        __M_writer('\n        </main>\n\n        <footer>\n            <div class="footer">\n                <p>Powered by SCRM Consulting</p>\n                <p>Copyright &copy; 2019</p>\n            </div>\n        </footer>\n\n    </body>\n</html>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -84,14 +83,10 @@ def render_title(context,**pageargs):
 def render_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def header():
             return render_header(context)
         __M_writer = context.writer()
-        __M_writer('\n                <img src="')
-        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
-        __M_writer('homepage/media/drugs.png" alt="drugs" style="height: 230px;" />\n                <div class="title">Welcome to <br /> Prescription Tracker</div>\n            ')
+        __M_writer('\n            ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -111,6 +106,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 9, "39": 13, "40": 45, "41": 46, "42": 46, "43": 58, "44": 58, "45": 61, "46": 61, "47": 64, "48": 64, "49": 67, "50": 67, "51": 73, "52": 73, "53": 73, "54": 73, "55": 74, "56": 74, "61": 82, "66": 88, "72": 7, "78": 7, "84": 79, "92": 79, "93": 80, "94": 80, "100": 86, "106": 86, "112": 106}}
+{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "32": 2, "37": 9, "38": 13, "39": 45, "40": 46, "41": 46, "42": 58, "43": 58, "44": 61, "45": 61, "46": 64, "47": 64, "48": 67, "49": 67, "50": 73, "51": 73, "52": 73, "53": 73, "54": 74, "55": 74, "60": 80, "65": 86, "71": 7, "77": 7, "83": 79, "89": 79, "95": 84, "101": 84, "107": 101}}
 __M_END_METADATA
 """
