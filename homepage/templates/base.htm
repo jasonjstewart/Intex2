@@ -74,8 +74,9 @@
                 </ul>        
                     <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>
                     <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>
-                    <a class="btn btn-secondary my-2 my-sm-0" style="margin-left: 10px;" href="${ '/account/logout' if user.is_authenticated else '/account' }" >${ 'Logout' if user.is_authenticated else 'Login'}</a>
-                    <a href="account/signup" class="btn btn-success" role="button" style="margin-left: 10px; display: ${ 'none' if user.is_authenticated else 'block' }">Sign Up</a>
+                    <a class="btn ${ 'btn-danger' if user.is_authenticated else 'btn-success'} my-2 my-sm-0" style="margin-left: 10px;" href="${ '/account/logout' if user.is_authenticated else '/account' }" >${ 'Logout' if user.is_authenticated else 'Login'}</a>
+                    <a href="account/signup" class="btn btn-info" role="button" style="margin-left: 10px; display: ${ 'none' if user.is_authenticated else 'block' }">Sign Up</a>
+                    <a class="btn btn-info my-2 my-sm-0" style="margin-left: 10px; display: ${ 'block' if user.is_authenticated and user.user_type == 4 else 'none' }" href="/adminTools" >Admin Tools</a>
             </div>
         </nav>
 
