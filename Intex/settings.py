@@ -86,8 +86,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Intex.wsgi.application'
 
 ALLOWED_HOSTS = [
-    'opiatetracker.co',
-    'www.opiatetracker.co',
+    'opioidtracker.co',
+    'www.opioidtracker.co',
     'localhost',
 ]
 
