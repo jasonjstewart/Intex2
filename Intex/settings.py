@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'homepage',
     'account',
     'providers',
-    'adminTools',
 ]
 
 MIDDLEWARE = [

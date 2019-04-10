@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554933633.2766488
+_modified_time = 1554936960.7839777
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,16 +19,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        self = context.get('self', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def header():
+            return render_header(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         user = context.get('user', UNDEFINED)
-        def header():
-            return render_header(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\n<html>\n    <meta charset="UTF-8">\n    <head>\n        <title>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -50,7 +50,7 @@ def render_body(context,**pageargs):
         __M_writer('">\n                    <a class="nav-link" href="/drugs">Drugs</a>\n                </li>\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'about' else ''))
         __M_writer('">\n                    <a class="nav-link" href="/about">About</a>\n                </li>\n                </ul>        \n                    <p class="userWelcome">')
-        __M_writer(django_mako_plus.ExpressionPostProcessor(self)("Welcome, " + user.username if user.is_authenticated else ""))
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)("Welcome, " + user.username + "!" if user.is_authenticated else ""))
         __M_writer('</p>\n                    <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>\n                    <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>\n                    <a class="btn ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'btn-danger' if user.is_authenticated else 'btn-success'))
         __M_writer(' my-2 my-sm-0" style="margin-left: 10px;" href="')
@@ -61,7 +61,7 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'none' if user.is_authenticated else 'block' ))
         __M_writer('">Sign Up</a>\n                    <a class="btn btn-info my-2 my-sm-0" style="margin-left: 10px; display: ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'block' if user.is_authenticated and user.user_type == 4 else 'none' ))
-        __M_writer('" href="/adminTools" >Admin Tools</a>\n            </div>\n        </nav>\n\n        <header>\n            ')
+        __M_writer('" href="/admin">Admin Tools</a>\n            </div>\n        </nav>\n\n        <header>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'header'):
             context['self'].header(**pageargs)
         

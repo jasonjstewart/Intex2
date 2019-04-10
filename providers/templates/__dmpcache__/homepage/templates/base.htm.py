@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554933497.463345
+_modified_time = 1554934880.5057733
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -19,16 +19,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def title():
-            return render_title(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        user = context.get('user', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
         def header():
             return render_header(context._locals(__M_locals))
+        user = context.get('user', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\n<html>\n    <meta charset="UTF-8">\n    <head>\n        <title>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -57,7 +57,7 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( '/account/logout' if user.is_authenticated else '/account' ))
         __M_writer('" >')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'Logout' if user.is_authenticated else 'Login'))
-        __M_writer('</a>\n                    <a href="account/signup" class="btn btn-info" role="button" style="margin-left: 10px; display: ')
+        __M_writer('</a>\n                    <a href="/account/signup" class="btn btn-info" role="button" style="margin-left: 10px; display: ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'none' if user.is_authenticated else 'block' ))
         __M_writer('">Sign Up</a>\n                    <a class="btn btn-info my-2 my-sm-0" style="margin-left: 10px; display: ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'block' if user.is_authenticated and user.user_type == 4 else 'none' ))
