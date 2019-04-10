@@ -1,0 +1,46 @@
+main {
+    text-align: center;
+}
+
+.form-box{
+    background: #fff;
+    margin: 30px auto;
+    max-width: 500px;
+    box-shadow: 0 3px 6px 0px rgba(0,0,0,0.16), 0 3px 6px 0px rgba(0,0,0,0.23);
+    border-radius: 30px;
+}
+
+form#signup-form {
+    overflow: hidden;
+    position: relative;
+    padding: 40px;
+}
+
+.head {
+    color: #fff;
+    font-size: 34px;
+    font-weight: normal;
+    padding: 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+    background: #375a7f;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+input {
+    padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin: 10px;
+    margin-top: 5px;
+}
+
+input:focus {
+    border-color:#333;
+}
+
+table {
+    margin: 0 auto;
+}
