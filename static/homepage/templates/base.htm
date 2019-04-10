@@ -71,7 +71,7 @@
                     <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>
                     <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>
                     <a class="btn btn-secondary my-2 my-sm-0" style="margin-left: 10px;" href="${ '/account/logout' if user.is_authenticated else '/account' }" >${ 'Logout' if user.is_authenticated else 'Login'}</a>
-                    <a href="account/signup" class="btn btn-success" role="button" style="margin-left: 10px; display: ${ 'none' if user.is_authenticated else 'block' }">Sign Up</a>
+                    <a href="/signup" class="btn btn-success" role="button" style="margin-left: 10px; display: ${ 'none' if user.is_authenticated else 'block' }">Sign Up</a>
             </div>
         </nav>
 
