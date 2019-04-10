@@ -34,11 +34,12 @@ main {
 footer {
     margin-top: 40px;
     border-top: 1px solid #CCCCCC;
-    text-align: right;
+    text-align: center;
+    
+    padding-top: 25px;
 }
 
-footer a {
-    display: inline-block;
+footer p {
     color: #777788;
-    margin: 15px 10% 0 0;
+    margin-top: 15px 10% 0 0;
 }
