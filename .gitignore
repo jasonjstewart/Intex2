@@ -6,7 +6,6 @@
 __dmpcache__/
 __pycache__/
 static/
-settings.py
 *.py[cod]
 *$py.class
 
