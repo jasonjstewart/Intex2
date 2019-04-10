@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554927330.9650924
+_modified_time = 1554930599.7213588
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,16 +19,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        user = context.get('user', UNDEFINED)
-        self = context.get('self', UNDEFINED)
-        request = context.get('request', UNDEFINED)
         def header():
             return render_header(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
+        user = context.get('user', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\n<html>\n    <meta charset="UTF-8">\n    <head>\n        <title>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -49,13 +49,17 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.app == 'drugs' else ''))
         __M_writer('">\n                    <a class="nav-link" href="/drugs">Drugs</a>\n                </li>\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'about' else ''))
-        __M_writer('">\n                    <a class="nav-link" href="/about">About</a>\n                </li>\n                </ul>        \n                    <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>\n                    <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>\n                    <a class="btn btn-secondary my-2 my-sm-0" style="margin-left: 10px;" href="')
+        __M_writer('">\n                    <a class="nav-link" href="/about">About</a>\n                </li>\n                </ul>        \n                    <button id="darkModeButton" class="btn btn-secondary" style="margin-left: 10px; display: none;">Lights Off</button>\n                    <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>\n                    <a class="btn ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'btn-danger' if user.is_authenticated else 'btn-success'))
+        __M_writer(' my-2 my-sm-0" style="margin-left: 10px;" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( '/account/logout' if user.is_authenticated else '/account' ))
         __M_writer('" >')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'Logout' if user.is_authenticated else 'Login'))
-        __M_writer('</a>\n                    <a href="account/signup" class="btn btn-success" role="button" style="margin-left: 10px; display: ')
+        __M_writer('</a>\n                    <a href="account/signup" class="btn btn-info" role="button" style="margin-left: 10px; display: ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'none' if user.is_authenticated else 'block' ))
-        __M_writer('">Sign Up</a>\n            </div>\n        </nav>\n\n        <header>\n            ')
+        __M_writer('">Sign Up</a>\n                    <a class="btn btn-info my-2 my-sm-0" style="margin-left: 10px; display: ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'block' if user.is_authenticated and user.user_type == 4 else 'none' ))
+        __M_writer('" href="/admin" >Admin Tools</a>\n            </div>\n        </nav>\n\n        <header>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'header'):
             context['self'].header(**pageargs)
         
@@ -109,6 +113,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 9, "39": 13, "40": 45, "41": 46, "42": 46, "43": 56, "44": 56, "45": 62, "46": 62, "47": 65, "48": 65, "49": 68, "50": 68, "51": 71, "52": 71, "53": 77, "54": 77, "55": 77, "56": 77, "57": 78, "58": 78, "63": 84, "68": 91, "74": 7, "80": 7, "86": 83, "92": 83, "98": 89, "104": 89, "110": 104}}
+{"filename": "/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "33": 2, "38": 9, "39": 13, "40": 45, "41": 46, "42": 46, "43": 56, "44": 56, "45": 62, "46": 62, "47": 65, "48": 65, "49": 68, "50": 68, "51": 71, "52": 71, "53": 77, "54": 77, "55": 77, "56": 77, "57": 77, "58": 77, "59": 78, "60": 78, "61": 79, "62": 79, "67": 85, "72": 92, "78": 7, "84": 7, "90": 84, "96": 84, "102": 90, "108": 90, "114": 108}}
 __M_END_METADATA
 """
