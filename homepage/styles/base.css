@@ -45,3 +45,11 @@ footer p {
     margin-right: 200px;
     margin-left: 200px;
 }
+
+.userWelcome {
+    display: block;
+    padding-top: 15px;
+    padding-right: 15px;
+    color: white;
+    font-size: 18px;
+}
