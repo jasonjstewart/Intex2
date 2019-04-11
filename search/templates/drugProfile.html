@@ -2,10 +2,11 @@
 <%from search import models as smod %>
 
 <%block name="header">
-<div class="card mb-3 prescriber-card">
-        <h3 class="card-header">${ drug.drugname }</h3>
+    <div class="card mb-3 prescriber-card">
+        <h3 class="card-header">${ drug }</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Opioid Status:</strong> ${ 'Opioid' if drug.isopioid else 'Non-opioid'}</li>
+            <li class="list-group-item"><strong>Definition: </strong>${ definition }</li>
         </ul>
         <div class="card-footer text-muted">
             <a class="card-link" href="/search/drugs/">&#10229; Back to search</a>
@@ -38,6 +39,31 @@
             <a class="card-link" href="/search/drugs/">&#10229; Back to search</a>
         </div>
     </div>
+    </br></br>
+    <div class="card mb-3 prescriber-card">
+        <h3 class="card-header">Similar Drugs</h3>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Drug Name</th>
+                        <th scope="col">Opioid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    %for item in drugs:
+                    <tr class="table-default">
+                        <th scope="row"><a class="card-link" href="/search/drugProfile/${ item.drugname }">${ item.drugname }</a></th>
+                        %if item.isopioid:
+                            <td>Yes</td>
+                        %else:
+                            <td>No</td>
+                        %endif
+                    </tr>
+                    %endfor
+                </tbody>
+            </table>
+        </div>
 </%block>
 <%block name="content">
     
