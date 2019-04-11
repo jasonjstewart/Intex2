@@ -3,10 +3,6 @@
 <%block name="header">
     <div class="card mb-3 prescriber-card">
         <h3 class="card-header">${ prescriber.fname + ' ' + prescriber.lname }</h3>
-        <!--<div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-        </div>-->
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Gender:</strong> ${ 'Male' if prescriber.gender == 'M' else 'Female'}</li>
             <li class="list-group-item"><strong>Credentials:</strong> ${ prescriber.credentials }</li>
@@ -14,9 +10,36 @@
             <li class="list-group-item"><strong>Specialty:</strong> ${ prescriber.specialty }</li>
         </ul>
         <div class="card-footer text-muted">
-            <a class="card-link" href="/search/prescribers/">Back to search</a>
+            <a class="card-link" href="/search/prescribers/">&#10229; Back to search</a>
         </div>
     </div>
+    </br></br>
+    <div class="card mb-3 prescriber-card">
+            <h3 class="card-header">Drugs Prescribed</h3>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">Drug</th>
+                        <th scope="col">Quantity Prescribed by ${ prescriber.fname }</th>
+                        <th scope="col">Average Quantity Prescribed By All Prescribers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        %for item in drugs:
+                        <tr class="table-default">
+                            <th scope="row"><a class="card-link" href="/search/drug_profile/${ drugs_id[item] }">${ item }</a></th>
+                            <td>${ drugs[item] }</td>
+                            <td>${ average_prescription[item] }</td>
+                        </tr>
+                        %endfor
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-muted">
+                <a class="card-link" href="/search/prescribers/">&#10229; Back to search</a>
+            </div>
+        </div>
 
 </%block>
 <%block name="content">
