@@ -1,0 +1,39 @@
+<%inherit file="app_base.htm" />
+<%from search import models as smod %>
+<%block name="header">
+    <h1>Search By</h1>
+</%block>
+<%block name="content">
+    <div class="card-deck">
+        <div class="card" style="border-width: 0px">
+            <div class="card-body"> 
+            
+                <i class="fas fa-user-md fa-9x text-danger"></i>
+                <br />
+                <br />
+                <a href="/prescribers" class="btn btn-primary btn-lg btn-block" role="button">Prescribers</a>
+
+            </div>
+        </div>
+        <div class="card" style="border-width: 0px">
+            <div class="card-body">
+
+                <i class="fas fa-prescription-bottle fa-9x text-danger"></i>
+                <br />
+                <br />
+                <a href="/drugs" class="btn btn-primary btn-lg btn-block" role="button">Drugs</a>
+
+            </div>
+        </div>
+        <div class="card" style="border-width: 0px">
+            <div class="card-body">
+            
+                <i class="fas fa-user-plus fa-9x text-danger"></i>
+                <br />
+                <br />
+                <a href="/about" class="btn btn-primary btn-lg btn-block" role="button">Drugs & Prescribers</a>
+                
+            </div>
+        </div>
+    </div>
+</%block>

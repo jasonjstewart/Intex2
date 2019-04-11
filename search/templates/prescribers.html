@@ -1,5 +1,5 @@
 <%inherit file="app_base.htm" />
-<%from providers import models as pmod %>
+<%from search import models as smod %>
 <%block name="header">
     <div class="form-box">
         <div class="head">Search By Provider Name</div>
@@ -20,10 +20,10 @@
                         </th>
                     </tr>
                 </thead>
-                %for item in providers:
+                %for item in prescribers:
                 <tr class="table-active">
                     <td scope="row" class="center">
-                        <a href="/providers/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a>
+                        <a href="/search/prescribers/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a>
                     </td>
                 </tr>
                 %endfor

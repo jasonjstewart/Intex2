@@ -34,11 +34,11 @@
                 <li class="nav-item ${ 'active' if request.dmp.app == 'homepage' and request.dmp.page == 'index' else ''}">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item ${ 'active' if request.dmp.app == 'providers' else ''}">
-                    <a class="nav-link" href="/providers">Providers</a>
+                <li class="nav-item ${ 'active' if request.dmp.page == 'prescribers' else ''}">
+                    <a class="nav-link" href="/search/prescribers">Prescribers</a>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.app == 'drugs' else ''}">
-                    <a class="nav-link" href="/drugs">Drugs</a>
+                    <a class="nav-link" href="/search/drugs">Drugs</a>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.page == 'about' else ''}">
                     <a class="nav-link" href="/about">About</a>

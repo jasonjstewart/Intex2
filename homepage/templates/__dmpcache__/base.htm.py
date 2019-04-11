@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554946874.9730153
+_modified_time = 1554948022.9326293
 _enable_loop = True
 _template_filename = '/mnt/c/Users/rskal/IS413/Intex/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,16 +19,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        user = context.get('user', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def header():
             return render_header(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        user = context.get('user', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\n<html>\n    <meta charset="UTF-8">\n    <head>\n        <title>\n            ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -46,10 +46,10 @@ def render_body(context,**pageargs):
         __M_writer('homepage/media/drugs.png" width="50" height="50" alt="">\n                Opioid Tracker\n                </a>\n\n            <div class="collapse navbar-collapse" id="navbarColor01">\n                <ul class="navbar-nav mr-auto">\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.app == 'homepage' and request.dmp.page == 'index' else ''))
         __M_writer('">\n                    <a class="nav-link" href="/">Home</a>\n                </li>\n                <li class="nav-item ')
-        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.app == 'providers' else ''))
-        __M_writer('">\n                    <a class="nav-link" href="/providers">Providers</a>\n                </li>\n                <li class="nav-item ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.app == 'prescribers' else ''))
+        __M_writer('">\n                    <a class="nav-link" href="/search/prescribers">Prescribers</a>\n                </li>\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.app == 'drugs' else ''))
-        __M_writer('">\n                    <a class="nav-link" href="/drugs">Drugs</a>\n                </li>\n                <li class="nav-item ')
+        __M_writer('">\n                    <a class="nav-link" href="/search/drugs">Drugs</a>\n                </li>\n                <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'about' else ''))
         __M_writer('">\n                    <a class="nav-link" href="/about">About</a>\n                </li>\n                </ul>        \n                    <p class="userWelcome">')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)("Welcome, " + user.username + "!" if user.is_authenticated else ""))

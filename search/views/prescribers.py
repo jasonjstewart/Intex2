@@ -1,7 +1,7 @@
 from django.conf import settings
 from django_mako_plus import view_function, jscontext
 from datetime import datetime, timezone
-from providers import models as pmod
+from search import models as smod
 from django import forms
 from django.http import HttpResponseRedirect
 from django.db import connection
@@ -21,9 +21,9 @@ def process_request(request):
         if form.is_valid():
             # Processes the data
             if form.search_fname != '':
-                query_set = pmod.Prescriber.objects.filter(fname__icontains=form.search_fname)
+                query_set = smod.Prescriber.objects.filter(fname__icontains=form.search_fname)
             else:
-                query_set = pmod.Prescriber.objects.all()
+                query_set = smod.Prescriber.objects.all()
             
             if form.search_lname != '':
                 query_set = query_set.filter(lname__icontains=form.search_lname)
@@ -50,9 +50,7 @@ def process_request(request):
                 'form': form,
             }
 
-            #redirects to results
-            print('Hitting Redirect \n\n\n\n\n\n')
-            return request.dmp.render('index.html', context)
+            return request.dmp.render('prescribers.html', context)
 
     # If GET, renders blank form
     else:
@@ -63,7 +61,7 @@ def process_request(request):
         'providers': providers,
     }
 
-    return request.dmp.render('index.html', context)
+    return request.dmp.render('prescribers.html', context)
 
 class SearchProvider(forms.Form):
     # Creates list of Gender options
@@ -75,7 +73,7 @@ class SearchProvider(forms.Form):
 
     # Creates list of Specialty options
     SPECIALTIES = []
-    for item in pmod.Prescriber.objects.values_list('specialty', flat=True):
+    for item in smod.Prescriber.objects.values_list('specialty', flat=True):
         SPECIALTIES.append((item, item))
 
     # Elimitates duplicates
@@ -86,7 +84,7 @@ class SearchProvider(forms.Form):
 
     # Creates list of Credentials options
     CREDENTIALS = []
-    for item in pmod.Prescriber.objects.values_list('credentials', flat=True).exclude(credentials__exact=''):
+    for item in smod.Prescriber.objects.values_list('credentials', flat=True).exclude(credentials__exact=''):
         CREDENTIALS.append((item, item))
 
     # Elimintates duplicates
@@ -97,7 +95,7 @@ class SearchProvider(forms.Form):
 
     # Creates list of Location options
     LOCATIONS = []
-    for item in pmod.Statedata.objects.all():
+    for item in smod.Statedata.objects.all():
         LOCATIONS.append((item.stateabbrev, item.state))
 
     # Adds option for any state
