@@ -37,12 +37,16 @@
             darkMode.style.display = 'none';
             lightMode.style.display = 'block';
         }
+        
+        function showAlert(){
+            console.log("run function");
+            console.log(document.getElementById("searchAlert"));
+            document.getElementById("searchAlert").style.display = 'block';
+        }
 
         window.onload = initiate;
 
-
         </script>
-
         ## render the static file links with the same name as this template
         <script src="/django_mako_plus/dmp-common.min.js"></script>
         ${ django_mako_plus.links(self) }
