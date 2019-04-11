@@ -28,9 +28,9 @@
                     <tbody>
                         %for item in drugs:
                         <tr class="table-default">
-                            <th scope="row">${ item.drugname.drugname }</th>
-                            <td>${ item.qty }</td>
-                            <td>Pass</td>
+                            <th scope="row">${ item }</th>
+                            <td>${ drugs[item] }</td>
+                            <td>${ average_prescription[item] }</td>
                         </tr>
                         %endfor
                     </tbody>

@@ -14,15 +14,19 @@ def process_request(request, prescriberid):
     prescriber = smod.Prescriber.objects.get(prescriberid=prescriberid)
 
     # Returns list of drugs prescribed by doctor
-    drugs = smod.Triple.objects.filter(prescriberid=prescriberid)
+    drugs = {}
+    for item in smod.Triple.objects.filter(prescriberid=prescriberid):
+        drugs[item.drugname.drugname] = item.qty
 
     # Grabs average drugs prescriptions
+    average_prescription = {}
     for item in drugs:
-        average_prescription = smod.Triple.objects.filter(drugname=item.drugname.drugname).aggregate(Avg('qty'))
+        average_prescription[item] = smod.Triple.objects.filter(drugname=item).aggregate(Avg('qty'))
     
     context = {
         'prescriber': prescriber,
         'drugs': drugs,
+        'average_prescription': average_prescription,
     }
 
     return request.dmp.render('prescriber_profile.html', context)        
