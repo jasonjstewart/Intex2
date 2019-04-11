@@ -14,6 +14,10 @@ def process_request(request, prescriberid):
     # Saves prescriber object
     prescriber = smod.Prescriber.objects.get(prescriberid=prescriberid)
 
+    p = smod.PrescriberPercentile.objects.get(prescriberid=prescriberid)
+
+    prescriber.percentile = p.percentile
+
     # Returns list of drugs prescribed by doctor
     drugs = {}
     drugs_id = {}
@@ -34,7 +38,7 @@ def process_request(request, prescriberid):
 
     querystring = {"api-version":"2.0","details":"true"}
 
-    payload = "{\r\n  \"Inputs\": {\r\n    \"input1\": {\r\n      \"ColumnNames\": [\r\n        \"PrescriberID\",\r\n        \"DrugName\",\r\n        \"Qty\"\r\n      ],\r\n      \"Values\": [\r\n        [\r\n          \"" + prescriberid + "\",\r\n          \"value\",\r\n          \"0\"\r\n        ]\r\n      ]\r\n    }\r\n  },\r\n  \"GlobalParameters\": {}\r\n}"
+    payload = "{\r\n  \"Inputs\": {\r\n    \"input1\": {\r\n      \"ColumnNames\": [\r\n        \"PrescriberID\",\r\n        \"DrugName\",\r\n        \"Qty\"\r\n      ],\r\n      \"Values\": [\r\n        [\r\n          \"" + str(prescriberid) + "\",\r\n          \"value\",\r\n          \"0\"\r\n        ]\r\n      ]\r\n    }\r\n  },\r\n  \"GlobalParameters\": {}\r\n}"
     headers = {
         'Authorization': "Bearer HtW5FREgQONeZ/MzE20JLq9pBebUv+psXeveBwLddyYa+mg5OMKeI6EpT+k26qhX1+Vd5Mz0/I6nppIly0zlxA==",
         'Content-Type': "application/json",
