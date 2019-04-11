@@ -9,6 +9,35 @@ cursor.execute("select * from ...")
 
 
 
+# begin similar docs code block #
+
+import requests
+
+url = "https://ussouthcentral.services.azureml.net/workspaces/382fad6769bc4a338bcdf681eec04cda/services/08c86c9c727e4b268c4293216230aa02/execute"
+
+querystring = {"api-version":"2.0","details":"true"}
+
+payload = "{\r\n  \"Inputs\": {\r\n    \"input1\": {\r\n      \"ColumnNames\": [\r\n        \"PrescriberID\",\r\n        \"DrugName\",\r\n        \"Qty\"\r\n      ],\r\n      \"Values\": [\r\n        [\r\n          \"1043434954\",\r\n          \"value\",\r\n          \"0\"\r\n        ]\r\n      ]\r\n    }\r\n  },\r\n  \"GlobalParameters\": {}\r\n}"
+headers = {
+    'Authorization': "Bearer HtW5FREgQONeZ/MzE20JLq9pBebUv+psXeveBwLddyYa+mg5OMKeI6EpT+k26qhX1+Vd5Mz0/I6nppIly0zlxA==",
+    'Content-Type': "application/json",
+    'cache-control': "no-cache",
+    'Postman-Token': "f03f6615-d4ae-4f09-ac98-066729d912df"
+    }
+
+response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+
+jresponse = json.loads(response.text)
+
+docs = jresponse["Results"]["output1"]["value"]["Values"][0]
+
+print(docs) # docs is a python list of the five similar drugs
+
+# end similar drugs code block #
+
+
+
+
 
 # begin similar drugs code block #
 
