@@ -80,12 +80,6 @@ def process_request(request, drugid):
     drugs = []
     for d in similar_drugs:
         drugs.append(smod.Drugs.objects.get(drugname=d))
-    print("\n\n\n\n\n\n\n")
-    print(type(drugs))
-    print(type(definition))
-    print(type(drug))
-    print(type(prescribers))
-    print(type(average_prescription))
 
     context = {
         'drugs': drugs,
