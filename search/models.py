@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 class Drugs(models.Model):
-    drugid = models.BigIntegerField(db_column='DrugID')  # Field name made lowercase.
-    drugname = models.CharField(db_column='DrugName', primary_key=True, max_length=50)  # Field name made lowercase.
-    isopioid = models.BooleanField(db_column='IsOpioid', blank=True, null=True)  # Field name made lowercase.
+    drugid = models.BigIntegerField(db_index = True, db_column='DrugID')  # Field name made lowercase.
+    drugname = models.CharField(db_index = True, db_column='DrugName', primary_key=True, max_length=50)  # Field name made lowercase.
+    isopioid = models.BooleanField(db_index = True, db_column='IsOpioid', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -12,15 +12,15 @@ class Drugs(models.Model):
 
 
 class Prescriber(models.Model):
-    prescriberid = models.BigIntegerField(db_column='PrescriberID', primary_key=True)  # Field name made lowercase.
-    fname = models.CharField(db_column='Fname', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    lname = models.CharField(db_column='Lname', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    gender = models.CharField(db_column='Gender', max_length=2, blank=True, null=True)  # Field name made lowercase.
-    state = models.ForeignKey('Statedata', models.DO_NOTHING, db_column='State')  # Field name made lowercase.
-    credentials = models.CharField(db_column='Credentials', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    specialty = models.CharField(db_column='Specialty', max_length=62, blank=True, null=True)  # Field name made lowercase.
+    prescriberid = models.AutoField(db_index = True, db_column='PrescriberID', primary_key=True)  # Field name made lowercase.
+    fname = models.CharField(db_index = True, db_column='Fname', verbose_name='First Name', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    lname = models.CharField(db_index = True, db_column='Lname', verbose_name='Last Name', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    gender = models.CharField(db_index = True, db_column='Gender', max_length=2, blank=True, null=True)  # Field name made lowercase.
+    state = models.ForeignKey('Statedata', models.DO_NOTHING, db_index = True, db_column='State')  # Field name made lowercase.
+    credentials = models.CharField(db_index = True, db_column='Credentials', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    specialty = models.CharField(db_index = True, db_column='Specialty', max_length=62, blank=True, null=True)  # Field name made lowercase.
     opioid_prescriber = models.BooleanField(db_column='Opioid Prescriber', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    totalprescriptions = models.BigIntegerField(db_column='TotalPrescriptions', blank=True, null=True)  # Field name made lowercase.
+    totalprescriptions = models.BigIntegerField(db_column='TotalPrescriptions', verbose_name='Total Prescriptions',blank=True, null=True)  # Field name made lowercase.
     abilify = models.IntegerField(db_column='ABILIFY', blank=True, null=True)  # Field name made lowercase.
     acetaminophen_codeine = models.IntegerField(db_column='ACETAMINOPHEN CODEINE', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     acyclovir = models.IntegerField(db_column='ACYCLOVIR', blank=True, null=True)  # Field name made lowercase.
@@ -272,6 +272,8 @@ class Prescriber(models.Model):
     ziprasidone_hcl = models.IntegerField(db_column='ZIPRASIDONE HCL', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     zolpidem_tartrate = models.IntegerField(db_column='ZOLPIDEM TARTRATE', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
 
+    def __str__(self):
+        return self.fname + ' ' + self.lname
     class Meta:
         managed = False
         db_table = 'Prescriber'
@@ -287,6 +289,8 @@ class Statedata(models.Model):
     population = models.BigIntegerField(db_column='Population', blank=True, null=True)  # Field name made lowercase.
     deaths = models.IntegerField(db_column='Deaths', blank=True, null=True)  # Field name made lowercase.
 
+    def __str__(self):
+        return self.state
     class Meta:
         managed = False
         db_table = 'StateData'

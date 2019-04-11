@@ -25,3 +25,6 @@ urlpatterns = [
     # the DMP router - this should normally be the last URL listed
     url('', include('django_mako_plus.urls')),
 ]
+
+admin.site.site_header = 'Opioid Tracker Administration'
+admin.site.site_title = 'Opioid Tracker Administration'

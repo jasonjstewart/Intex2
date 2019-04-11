@@ -2,12 +2,14 @@
 <%from search import models as smod %>
 
 <%block name="header">
-    <div id="searchAlert" class="alert ${ 'hideAlert' if len(prescribers) == 0 else '' } ${ 'alert-danger' if len(prescribers) == 0 else 'alert-info' } alert-dismissable">
+    <div id="searchAlert" class="alert ${ 'hideAlert' if len(prescribers) == 0 else '' } ${ 'alert-danger' if len(prescribers) == 0 else 'alert-success' } alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
-        ${ 'Loading search results, this may take a moment...' if len(prescribers) == 0 else 'Success! See search results below...' }
+        ${ 'Loading search results, this may take a moment...' if len(prescribers) == 0 else 'Success! Returned ' + str(len(prescribers)) + ' result(s).' }
     </div>
 
-    <div class="form-box">
+    <a class="btn btn-primary btn-lg btn-block ${ 'hideAlert' if len(prescribers) == 0 else '' }" style="margin: 10px 15% 10px 15%; width: 70%;" href="/search/prescribers">New Search</a>
+
+    <div class="form-box" style="${ 'display: none;' if len(prescribers) != 0 else '' }">
         <div class="head bg-primary">Search By Prescriber</div>
         <form id="search-form" class="form-inline my-2 my-lg-0" method="POST">
                 <table align="center">
@@ -26,16 +28,22 @@
                 <th scope="col">Credentials</th>
                 <th scope="col">Location</th>
                 <th scope="col">Specialty</th>
+                %if (request.user.user_type == 1 or request.user.user_type == 4):
+                    <th scope="col">Actions</th>
+                %endif
             </tr>
         </thead>
         <tbody>
             %for item in prescribers:
             <tr class="table-light">
-                <td class="prescriberTableItem" scope="row"><a href="/search/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></td>                    
+                <td class="prescriberTableItem" scope="row"><a href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></td>                    
                 <td class="prescriberTableItem" scope="row"><a>${ 'Male' if item.gender == 'M' else 'Female' }</a></td>
                 <td class="prescriberTableItem" scope="row"><a>${ item.credentials }</a></td>
                 <td class="prescriberTableItem" scope="row"><a>${ item.state.state }</a></td>
                 <td class="prescriberTableItem" scope="row"><a>${ item.specialty }</a></td>
+                %if (request.user.user_type == 1 or request.user.user_type == 4):
+                    <td class="prescriberTableItem" scope="row"><a href="/admin/search/prescriber/${ item.prescriberid }/change">Update</a>/<a href="/admin/search/prescriber/${ item.prescriberid }/delete">Delete</a>
+                %endif
             </tr>
             %endfor
         </tbody>

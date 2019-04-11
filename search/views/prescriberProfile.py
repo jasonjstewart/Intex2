@@ -35,4 +35,4 @@ def process_request(request, prescriberid):
         'average_prescription': average_prescription,
     }
 
-    return request.dmp.render('prescriber_profile.html', context)        
+    return request.dmp.render('prescriberProfile.html', context)        
