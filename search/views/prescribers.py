@@ -9,13 +9,13 @@ from django.utils.html import escape
 
 @view_function
 def process_request(request):
-    # Creates empty providers variable
-    providers = []
+    # Creates empty prescribers variable
+    prescribers = []
 
     # if this is a POST request then process form data
     if request.method == 'POST':
         # Creates instance of form
-        form = SearchProvider(request.POST)
+        form = SearchPrescriber(request.POST)
 
         # Checks validity of Form
         if form.is_valid():
@@ -41,12 +41,12 @@ def process_request(request):
                 query_set = query_set.filter(specialty__iexact=form.search_specialty)
 
             # Saves query set
-            providers = query_set
+            prescribers = query_set
 
-            form = SearchProvider()
+            form = SearchPrescriber()
             #moves to context tuple
             context = {
-                'providers': providers,
+                'prescribers': prescribers,
                 'form': form,
             }
 
@@ -54,16 +54,16 @@ def process_request(request):
 
     # If GET, renders blank form
     else:
-        form = SearchProvider()
+        form = SearchPrescriber()
 
     context = {
         'form': form,
-        'providers': providers,
+        'prescribers': prescribers,
     }
 
     return request.dmp.render('prescribers.html', context)
 
-class SearchProvider(forms.Form):
+class SearchPrescriber(forms.Form):
     # Creates list of Gender options
     GENDER_CHOICES = [
         ('M', 'Male'),
