@@ -51,7 +51,7 @@ def process_request(request):
             }
 
             if request.user.is_authenticated:
-                return request.dmp.render('prescriber.html', context)
+                return request.dmp.render('prescribers.html', context)
 
             else:
                 return HttpResponseRedirect('/account/')
