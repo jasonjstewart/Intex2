@@ -1,0 +1,34 @@
+main {
+    text-align: center;
+}
+
+.prescriber-card {
+    background: #fff;
+    margin: 30px auto;
+    max-width: 700px;
+    box-shadow: 0 3px 6px 0px rgba(0,0,0,0.16), 0 3px 6px 0px rgba(0,0,0,0.23);
+    border-radius: 30px;
+}
+
+
+form#prescriber-card {
+    overflow: hidden;
+    position: relative;
+    padding: 40px;
+}
+
+.head {
+    color: #fff;
+    font-size: 34px;
+    font-weight: normal;
+    padding: 10px 50px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #18BC9C;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+#back_btn {
+    color: white;
+}
