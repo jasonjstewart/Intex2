@@ -28,7 +28,7 @@
                     <tbody>
                         %for item in drugs:
                         <tr class="table-default">
-                            <th scope="row">${ item }</th>
+                            <th scope="row"><a class="card-link" href="/search/drug_profile/${ drugs_id[item] }">${ item }</a></th>
                             <td>${ drugs[item] }</td>
                             <td>${ average_prescription[item] }</td>
                         </tr>
