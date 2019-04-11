@@ -8,6 +8,7 @@ main {
     max-width: 70%;
     box-shadow: 0 3px 6px 0px rgba(0,0,0,0.16), 0 3px 6px 0px rgba(0,0,0,0.23);
     border-radius: 30px;
+    height: 100%;
 }
 
 
@@ -24,8 +25,8 @@ form#search-form {
     padding: 10px 50px;
     text-align: center;
     text-transform: uppercase;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
 
 #search-box {
