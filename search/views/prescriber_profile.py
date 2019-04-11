@@ -6,6 +6,7 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.db import connection
 from django.utils.html import escape
+from django.db.models import Avg
 
 @view_function
 def process_request(request, prescriberid):
@@ -13,14 +14,15 @@ def process_request(request, prescriberid):
     prescriber = smod.Prescriber.objects.get(prescriberid=prescriberid)
 
     # Returns list of drugs prescribed by doctor
-    drugs = smod.Triple.objects.filter(prescriberid=prescriberid).values_list('drugname', flat=True)
+    drugs = smod.Triple.objects.filter(prescriberid=prescriberid)
 
-    # Debugging code
+    # Grabs average drugs prescriptions
     for item in drugs:
-       print(item)
+        average_prescription = smod.Triple.objects.filter(drugname=item.drugname.drugname).aggregate(Avg('qty'))
     
     context = {
         'prescriber': prescriber,
+        'drugs': drugs,
     }
 
     return request.dmp.render('prescriber_profile.html', context)        
