@@ -37,8 +37,12 @@ def process_request(request):
                 'drugs': drugs,
                 'form': form,
             }
+            
+            if request.user.is_authenticated:
+                return request.dmp.render('drugs.html', context)
 
-            return request.dmp.render('drugs.html', context)
+            else:
+                return HttpResponseRedirect('/account/')
 
     # If GET, renders blank form
     else:
@@ -49,7 +53,11 @@ def process_request(request):
         'drugs': drugs,
     }
 
-    return request.dmp.render('drugs.html', context)
+    if request.user.is_authenticated:
+        return request.dmp.render('drugs.html', context)
+
+    else:
+        return HttpResponseRedirect('/account/')
 
 class SearchDrugs(forms.Form):
     # Creates list of Drug type options

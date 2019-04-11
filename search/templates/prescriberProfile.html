@@ -2,7 +2,14 @@
 <%from search import models as smod %>
 <%block name="header">
     <div class="card mb-3 prescriber-card">
-        <h3 class="card-header">${ prescriber.fname + ' ' + prescriber.lname }</h3>
+
+
+        %if (request.user.user_type == 2):
+            <h3 class="card-header">${ prescriber.prescriberid }</h3>
+        %else:
+            <h3 class="card-header">${ prescriber.fname + ' ' + prescriber.lname }</h3>
+        %endif
+
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Gender:</strong> ${ 'Male' if prescriber.gender == 'M' else 'Female'}</li>
             <li class="list-group-item"><strong>Credentials:</strong> ${ prescriber.credentials }</li>

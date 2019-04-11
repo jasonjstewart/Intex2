@@ -23,7 +23,7 @@
     <table class="table table-hover" style="width: 70%; margin-left: 15%; margin-right: 15%; ${ 'display: None' if len(prescribers) == 0 else '' }">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Name</th>
+                <th scope="col">${ 'Unique ID' if request.user.user_type == 2 else 'Name' }</th>
                 <th scope="col">Gender</th>
                 <th scope="col">Credentials</th>
                 <th scope="col">Location</th>
@@ -36,7 +36,11 @@
         <tbody>
             %for item in prescribers:
             <tr class="table-light">
-                <td class="prescriberTableItem" scope="row"><a href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></td>                    
+                %if (request.user.user_type == 2):
+                    <td class="prescriberTableItem" scope="row"><a href="/search/prescriberProfile/${ item.prescriberid }">${ item.prescriberid }</a></td>
+                %else:
+                    <td class="prescriberTableItem" scope="row"><a href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></td>
+                %endif                   
                 <td class="prescriberTableItem" scope="row"><a>${ 'Male' if item.gender == 'M' else 'Female' }</a></td>
                 <td class="prescriberTableItem" scope="row"><a>${ item.credentials }</a></td>
                 <td class="prescriberTableItem" scope="row"><a>${ item.state.state }</a></td>

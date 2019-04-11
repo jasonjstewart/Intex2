@@ -35,4 +35,8 @@ def process_request(request, prescriberid):
         'average_prescription': average_prescription,
     }
 
-    return request.dmp.render('prescriberProfile.html', context)        
+    if request.user.is_authenticated:
+        return request.dmp.render('prescriberProfile.html', context)
+
+    else:
+        return HttpResponseRedirect('/account/')

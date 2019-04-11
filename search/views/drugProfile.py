@@ -27,4 +27,8 @@ def process_request(request, drugid):
         'average_prescription': average_prescription,
     }
 
-    return request.dmp.render('drugProfile.html', context)
+    if request.user.is_authenticated:
+        return request.dmp.render('drugProfile.html', context)
+
+    else:
+        return HttpResponseRedirect('/account/')

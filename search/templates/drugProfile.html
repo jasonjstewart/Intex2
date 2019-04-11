@@ -26,7 +26,13 @@
                 <tbody>
                     %for item in prescribers:
                     <tr class="table-default">
-                        <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></th>
+
+                        %if (request.user.user_type == 2):
+                            <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ item.prescriberid }">${ item.prescriberid }</a></th>
+                        %else:
+                            <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></th>
+                        %endif
+                        
                         <td>${ prescribers[item] }</td>
                         <td>${ average_prescription }</td>
                     </tr>
