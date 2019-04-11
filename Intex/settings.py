@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(=+jcrqk9_dxsgqq%u!2oq1ycx0^78(v_zs%izzmcq-e&h+*d_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 AUTH_USER_MODEL = 'account.customUser'
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'homepage',
     'account',
     'providers',
+    'analytics',
 ]
 
 MIDDLEWARE = [
