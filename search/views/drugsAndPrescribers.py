@@ -6,6 +6,7 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.db import connection
 from django.utils.html import escape
+from django.db.models import Q
 
 @view_function
 def process_request(request):
@@ -21,32 +22,41 @@ def process_request(request):
         if form.is_valid():
             # Processes the data
             if form.search_fname != '':
-                query_set = smod.Prescriber.objects.filter(fname__icontains=form.search_fname)
+                prescriber_query_set = smod.Prescriber.objects.filter(fname__icontains=form.search_fname)
             else:
-                query_set = smod.Prescriber.objects.all()
+                prescriber_query_set = smod.Prescriber.objects.all()
             
             if form.search_lname != '':
-                query_set = query_set.filter(lname__icontains=form.search_lname)
+                prescriber_query_set = prescriber_query_set.filter(lname__icontains=form.search_lname)
 
             if form.search_gender != '':
-                query_set = query_set.filter(gender__iexact=form.search_gender)
+                prescriber_query_set = prescriber_query_set.filter(gender__iexact=form.search_gender)
 
             if form.search_credentials != '':
-                query_set = query_set.filter(credentials__iexact=form.search_credentials)
+                prescriber_query_set = prescriber_query_set.filter(credentials__iexact=form.search_credentials)
 
             if form.search_location != '':
-                query_set = query_set.filter(state__exact=form.search_location)
+                prescriber_query_set = prescriber_query_set.filter(state__exact=form.search_location)
 
             if form.search_specialty != '':
-                query_set = query_set.filter(specialty__iexact=form.search_specialty)
+                prescriber_query_set = prescriber_query_set.filter(specialty__iexact=form.search_specialty)
+
+            # Creates list of requested prescriber IDs
+            list_prescribers = prescriber_query_set.values_list('prescriberid', flat=True)
+            print(list_prescribers)
+
+            # if form.search_drugname != '':
+            #     for prescriber in prescriber_query_set:
+            #         for item in smod.Triple.objects.filter(drugname=form.search_drugname):
+            #             if prescriber.prescriberid == item.prescriberid:
+                            
 
             # Saves query set
-            prescribers = query_set
+            #prescribers = prescriber_query_set
 
             form = SearchPrescriber()
             #moves to context tuple
             context = {
-                'prescribers': prescribers,
                 'form': form,
             }
 
