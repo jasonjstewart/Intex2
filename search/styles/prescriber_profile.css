@@ -2,7 +2,7 @@ main {
     text-align: center;
 }
 
-.form-box{
+.prescriber-card {
     background: #fff;
     margin: 30px auto;
     max-width: 700px;
@@ -11,7 +11,7 @@ main {
 }
 
 
-form#search-form {
+form#prescriber-card {
     overflow: hidden;
     position: relative;
     padding: 40px;
@@ -29,6 +29,6 @@ form#search-form {
     border-top-right-radius: 30px;
 }
 
-a {
+#back_btn {
     color: white;
 }

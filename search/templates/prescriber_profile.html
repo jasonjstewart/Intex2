@@ -1,38 +1,23 @@
 <%inherit file="app_base.htm" />
 <%from search import models as smod %>
 <%block name="header">
-    <div class="form-box">
-        <div class="head">${ prescriber.fname + ' ' + prescriber.lname }</div>
-        <form id="search-form" class="form-inline my-2 my-lg-0" method="POST">
-                
-            <a id="submit_btn" class="btn btn-info btn-block btn-lg" >Back to search</a>           
-        </form>
+    <div class="card mb-3 prescriber-card">
+        <h3 class="card-header">${ prescriber.fname + ' ' + prescriber.lname }</h3>
+        <!--<div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+        </div>-->
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Gender:</strong> ${ 'Male' if prescriber.gender == 'M' else 'Female'}</li>
+            <li class="list-group-item"><strong>Credentials:</strong> ${ prescriber.credentials }</li>
+            <li class="list-group-item"><strong>Location:</strong> ${ prescriber.state.state }</li>
+            <li class="list-group-item"><strong>Specialty:</strong> ${ prescriber.specialty }</li>
+        </ul>
+        <div class="card-footer text-muted">
+            <a class="card-link" href="/search/prescribers/">Back to search</a>
+        </div>
     </div>
 
-    <!--
-    <div class="card mb-3">
-        <h3 class="card-header">Card header</h3>
-        <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-        </div>
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-        </div>
-        <div class="card-footer text-muted">
-        2 days ago
-        </div>
-    </div>
--->
 </%block>
 <%block name="content">
     
