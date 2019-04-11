@@ -301,3 +301,16 @@ class Triple(models.Model):
     class Meta:
         managed = False
         db_table = 'Triple'
+
+class TopTenWorst(models.Model):
+    prescriberid = models.BigIntegerField(blank=True, null=True)
+    fname = models.CharField(db_column='Fname', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    lname = models.CharField(max_length=50, blank=True, null=True)
+    gender = models.CharField(max_length=50, blank=True, null=True)
+    state = models.CharField(max_length=50, blank=True, null=True)
+    credentials = models.CharField(max_length=50, blank=True, null=True)
+    specialty = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'top_ten_worst'
