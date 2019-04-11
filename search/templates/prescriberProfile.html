@@ -52,5 +52,36 @@
 
 </%block>
 <%block name="content">
-    
+    <style>
+        .up{bottom:300px;}
+        .down{bottom:0px;}
+    </style>
+    <script>
+        $(function() {
+            var containerDiv, viz;
+            var containerDiv = document.getElementById("vizContainer"),
+            url = "https://public.tableau.com/views/PrescriberPie/OpioidBalance?:embed=y&:display_count=yes&publish=yes",
+            options = {
+                width: 400,
+                height: 300,
+                "PrescriberID": "${ prescriber.prescriberid }",
+                hideTabs: true,
+                onFirstInteractive: function () {
+                    console.log("Run this code when the viz has finished loading.");
+                }
+            };
+            var viz = new tableau.Viz(containerDiv, url, options);
+            $('#dropper').click(function (){
+                var src = ($('#dropper').attr('src') === '/static/search/media/up.png')
+                    ? '/static/search/media/down.png'
+                    : '/static/search/media/up.png';
+                $('#dropper').attr('src', src);
+                $('#dropper').toggleClass('up');
+                $('#dropper').toggleClass('down');
+                $('#vizContainer').toggle();
+            });
+       });
+    </script>
+    <img id="dropper" class="up" style="position:fixed;right:0;" src="/static/search/media/down.png"/></img>
+    <div id="vizContainer" style="position:fixed;bottom:0;right:0;"></div>
 </%block>
