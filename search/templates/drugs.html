@@ -32,7 +32,7 @@
             <tr class="table-light">
 
                 <td class="drugTableItem" scope="row"><a>${ item.drugid }</a></td>
-                <td class="drugTableItem" scope="row"><a href="/search/drug_profile/${ item.drugid }">${ item.drugname }</a></td>
+                <td class="drugTableItem" scope="row"><a href="/search/drugProfile/${ item.drugid }">${ item.drugname }</a></td>
                 <td class="drugTableItem" scope="row"><a>${ 'Opioid' if item.isopioid else 'Non-Opioid' }</a></td>
             </tr>
             %endfor
