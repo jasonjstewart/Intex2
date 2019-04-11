@@ -1,5 +1,5 @@
 html, body {
-    padding: 0;
+    padding: 20px 0 0 0;
     font-family: sans-serif;
     color: #777788;
 }
@@ -52,4 +52,8 @@ footer p {
     padding-right: 15px;
     color: white;
     font-size: 18px;
+}
+
+.navbar {
+    padding: .5rem 1rem;
 }

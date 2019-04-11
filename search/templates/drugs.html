@@ -2,12 +2,14 @@
 <%from search import models as smod %>
 
 <%block name="header">
-    <div id="searchAlert" class="alert ${ 'hideAlert' if len(drugs) == 0 else '' } ${ 'alert-danger' if len(drugs) == 0 else 'alert-info' } alert-dismissable">
+    <div id="searchAlert" class="alert ${ 'hideAlert' if len(drugs) == 0 else '' } ${ 'alert-danger' if len(drugs) == 0 else 'alert-success' } alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
-        ${ 'Loading search results, this may take a moment...' if len(drugs) == 0 else 'Success! See search results below...' }
+        ${ 'Loading search results, this may take a moment...' if len(drugs) == 0 else 'Success! Returned ' + str(len(drugs)) + ' result(s).' }
     </div>
 
-    <div class="form-box">
+    <a class="btn btn-primary btn-lg btn-block ${ 'hideAlert' if len(drugs) == 0 else '' }" style="margin: 10px 15% 10px 15%; width: 70%;" href="/search/drugs">New Search</a>
+
+    <div class="form-box" style="${ 'display: none;' if len(drugs) != 0 else '' }">
         <div class="head bg-primary">Search By Drug</div>
         <form id="search-form" class="form-inline my-2 my-lg-0" method="POST">
                 <table align="center">

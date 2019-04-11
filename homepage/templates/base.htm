@@ -54,7 +54,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -88,7 +88,7 @@
                     <button id="lightModeButton" class="btn btn-secondary" style="margin-left: 10px;">Lights On</button>
                     <a class="btn ${ 'btn-danger' if user.is_authenticated else 'btn-success'} my-2 my-sm-0" style="margin-left: 10px;" href="${ '/account/logout' if user.is_authenticated else '/account' }" >${ 'Logout' if user.is_authenticated else 'Login'}</a>
                     <a href="/account/signup" class="btn btn-info" role="button" style="margin-left: 10px; display: ${ 'none' if user.is_authenticated else 'block' }">Sign Up</a>
-                    <a class="btn btn-info my-2 my-sm-0" style="margin-left: 10px; display: ${ 'block' if user.is_authenticated and user.user_type == 4 else 'none' }" href="/admin">Admin Tools</a>
+                    <a class="btn btn-info my-2 my-sm-0" style="margin-left: 10px; display: ${ 'block' if user.is_authenticated and (user.user_type == 4 or user.user_type == 1) else 'none' }" href="/admin">Admin Tools</a>
             </div>
         </nav>
 
