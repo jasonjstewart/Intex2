@@ -1,0 +1,45 @@
+<%inherit file="app_base.htm" />
+<%from search import models as smod %>
+<%block name="header">
+    <div class="form-box">
+        <div class="head bg-primary">Search By Drug</div>
+        <form id="search-form" class="form-inline my-2 my-lg-0" method="POST">
+                <table align="center">
+                    ${ form.as_table() }
+                </table>
+            <input id="submit_btn" type="submit" class="btn btn-primary btn-block btn-lg" value="Search"/>           
+        </form>
+    </div>
+
+    <div class="center">
+        <table align="center" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Drug ID</th>
+                    <th scope="col">Drug Name</th>
+                    <th scope="col">Drug Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                %for item in drugs:
+                <tr class="table-active">
+                
+                    <td scope="row" class="center">
+                        <a href="/search/drug_profile/${ item.drugid }">${ item.drugid }</a>
+                    </td>
+                    <td scope="row" class="center">
+                        <a href="/search/drug_profile/${ item.drugid }">${ item.drugname }</a>
+                    </td>
+                    
+                    <td scope="row" class="center">
+                        <a href="/search/drug_profile/${ item.drugid }">${ item.isopioid }</a>
+                    </td>
+                </tr>
+                %endfor
+            </tbody>
+        </table>
+        </div>
+</%block>
+<%block name="content">
+    
+</%block>

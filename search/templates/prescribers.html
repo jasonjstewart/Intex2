@@ -2,12 +2,12 @@
 <%from search import models as smod %>
 <%block name="header">
     <div class="form-box">
-        <div class="head">Search By Provider Name</div>
+        <div class="head bg-primary">Search By Provider</div>
         <form id="search-form" class="form-inline my-2 my-lg-0" method="POST">
                 <table align="center">
                     ${ form.as_table() }
                 </table>
-            <input id="submit_btn" type="submit" class="btn btn-info btn-block btn-lg" value="Search"/>           
+            <input id="submit_btn" type="submit" class="btn btn-primary btn-block btn-lg" value="Search"/>           
         </form>
     </div>
 
@@ -23,7 +23,7 @@
                 %for item in prescribers:
                 <tr class="table-active">
                     <td scope="row" class="center">
-                        <a href="/search/prescribers/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a>
+                        <a href="/search/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a>
                     </td>
                 </tr>
                 %endfor

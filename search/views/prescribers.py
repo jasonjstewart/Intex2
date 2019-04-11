@@ -9,8 +9,8 @@ from django.utils.html import escape
 
 @view_function
 def process_request(request):
-    # Creates empty providers variable
-    providers = []
+    # Creates empty prescribers variable
+    prescribers = []
 
     # if this is a POST request then process form data
     if request.method == 'POST':
@@ -41,12 +41,12 @@ def process_request(request):
                 query_set = query_set.filter(specialty__iexact=form.search_specialty)
 
             # Saves query set
-            providers = query_set
+            prescribers = query_set
 
             form = SearchProvider()
             #moves to context tuple
             context = {
-                'providers': providers,
+                'prescribers': prescribers,
                 'form': form,
             }
 
@@ -58,7 +58,7 @@ def process_request(request):
 
     context = {
         'form': form,
-        'providers': providers,
+        'prescribers': prescribers,
     }
 
     return request.dmp.render('prescribers.html', context)
@@ -101,12 +101,12 @@ class SearchProvider(forms.Form):
     # Adds option for any state
     LOCATIONS.append(('', 'Search all locations'))
 
-    fname = forms.CharField(label='', max_length=11, required=False, widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control mr-sm-2', 'id': 'search-box'}))
-    lname = forms.CharField(label='', max_length=11, required=False, widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control mr-sm-2', 'id': 'search-box'}))
-    gender = forms.ChoiceField(choices=GENDER_CHOICES, required=False, widget=forms.Select(attrs={'class':'custom-select'}))
-    credentials = forms.ChoiceField(choices=CREDENTIALS, required=False, widget=forms.Select(attrs={'class':'custom-select'}))
-    location = forms.ChoiceField(choices=LOCATIONS, required=False, widget=forms.Select(attrs={'class':'custom-select'}))
-    specialty = forms.ChoiceField(choices=SPECIALTIES, required=False, widget=forms.Select(attrs={'class':'custom-select'}))
+    fname = forms.CharField(label='First Name', max_length=11, required=False, widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2', 'id': 'search-box', 'style': 'margin: 10px 0px 0px 10px;'}))
+    lname = forms.CharField(label='Last Name', max_length=11, required=False, widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2', 'id': 'search-box', 'style': 'margin: 10px 0px 0px 10px;'}))
+    gender = forms.ChoiceField(choices=GENDER_CHOICES, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
+    credentials = forms.ChoiceField(choices=CREDENTIALS, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
+    location = forms.ChoiceField(choices=LOCATIONS, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
+    specialty = forms.ChoiceField(choices=SPECIALTIES, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
 
     #Method to validate data
     def clean(self):
