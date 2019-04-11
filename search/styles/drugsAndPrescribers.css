@@ -49,6 +49,14 @@ form#search-form {
     border-color: #D1D2D4;
 }
 
+#id_isopioid {
+    border-color: #D1D2D4;
+}
+
+#id_drugname {
+    border-color: #D1D2D4;
+}
+
 #submit_btn {
     margin-top: 25px;
 }

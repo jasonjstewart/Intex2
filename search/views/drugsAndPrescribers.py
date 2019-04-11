@@ -50,7 +50,7 @@ def process_request(request):
                 'form': form,
             }
 
-            return request.dmp.render('prescribers.html', context)
+            return request.dmp.render('drugsAndPrescribers.html', context)
 
     # If GET, renders blank form
     else:
@@ -61,7 +61,7 @@ def process_request(request):
         'prescribers': prescribers,
     }
 
-    return request.dmp.render('prescribers.html', context)
+    return request.dmp.render('drugsAndPrescribers.html', context)
 
 class SearchPrescriber(forms.Form):
     # Creates list of Gender options
@@ -103,12 +103,28 @@ class SearchPrescriber(forms.Form):
     # Adds option for any state
     LOCATIONS.insert(0,('', 'Search all locations'))
 
+    # Creates list of Drug type options
+    TYPE_CHOICES = [
+        ('1', 'Opioid'),
+        ('0', 'Non-Opioid'),
+        ('', 'Both'),
+    ]
+
+    # Creates list of Drugs options
+    DRUGS = []
+    for item in smod.Drugs.objects.values_list('drugname', flat=True):
+        DRUGS.append((item, item))
+
+    DRUGS.insert(0,('', 'Search all drugs'))
+
     fname = forms.CharField(label='First Name', max_length=11, required=False, widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2', 'id': 'search-box', 'style': 'margin: 10px 0px 0px 10px;'}))
     lname = forms.CharField(label='Last Name', max_length=11, required=False, widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2', 'id': 'search-box', 'style': 'margin: 10px 0px 0px 10px;'}))
     gender = forms.ChoiceField(choices=GENDER_CHOICES, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
     credentials = forms.ChoiceField(choices=CREDENTIALS, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
     location = forms.ChoiceField(choices=LOCATIONS, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
     specialty = forms.ChoiceField(choices=SPECIALTIES, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
+    drugname = forms.ChoiceField(label='Drug Name', choices=DRUGS, required=False, widget=forms.Select(attrs={'class': 'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
+    isopioid = forms.ChoiceField(label='Drug Type', choices=TYPE_CHOICES, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px; '}))
 
     #Method to validate data
     def clean(self):
@@ -119,9 +135,11 @@ class SearchPrescriber(forms.Form):
         self.search_credentials = self.cleaned_data.get('credentials')
         self.search_location = self.cleaned_data.get('location')
         self.search_specialty = self.cleaned_data.get('specialty')
+        self.search_drugname = self.cleaned_data.get('drugname')
+        self.search_isopioid = self.cleaned_data.get('isopioid')
 
         # Ensures they search on at least one value
-        if self.search_fname == '' and self.search_lname == '' and self.search_gender == '' and self.search_credentials == '' and self.search_location == '' and self.search_specialty == '':
+        if self.search_fname == '' and self.search_lname == '' and self.search_gender == '' and self.search_credentials == '' and self.search_location == '' and self.search_specialty == '' and self.drugname == '' and self.isopioid == '':
             raise forms.ValidationError('Please search on at least one value')
 
         # Checks if names are blank

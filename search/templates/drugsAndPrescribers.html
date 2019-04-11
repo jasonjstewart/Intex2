@@ -10,7 +10,7 @@
     <a class="btn btn-primary btn-lg btn-block ${ 'hideAlert' if len(prescribers) == 0 else '' }" style="margin: 10px 15% 10px 15%; width: 70%;" href="/search/prescribers">New Search</a>
 
     <div class="form-box" style="${ 'display: none;' if len(prescribers) != 0 else '' }">
-        <div class="head bg-primary">Search By Prescriber</div>
+        <div class="head bg-primary">Search By Drug and Prescriber</div>
         <form id="search-form" class="form-inline my-2 my-lg-0" method="POST">
                 <table align="center">
                     ${ form.as_table() }
