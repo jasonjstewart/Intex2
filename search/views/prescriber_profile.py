@@ -11,6 +11,13 @@ from django.utils.html import escape
 def process_request(request, prescriberid):
     # Saves prescriber object
     prescriber = smod.Prescriber.objects.get(prescriberid=prescriberid)
+
+    # Returns list of drugs prescribed by doctor
+    drugs = smod.Triple.objects.filter(prescriberid=prescriberid).values_list('drugname', flat=True)
+
+    # Debugging code
+    for item in drugs:
+       print(item)
     
     context = {
         'prescriber': prescriber,
