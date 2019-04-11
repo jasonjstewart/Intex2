@@ -314,3 +314,12 @@ class TopTenWorst(models.Model):
     class Meta:
         managed = False
         db_table = 'top_ten_worst'
+
+
+class PrescriberPercentile(models.Model):
+    prescriberid = models.BigIntegerField(db_column='PrescriberID', primary_key=True)  # Field name made lowercase.
+    percentile = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'prescriber_percentile'
