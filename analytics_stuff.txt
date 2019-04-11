@@ -107,3 +107,29 @@ def get_similar_drugs(drug):
     return dot_drugs
 
 # end code block to get opioid-like drugs #
+
+
+
+
+
+
+
+# begin code block to update percentile rankings #
+
+import requests
+
+url = "https://ussouthcentral.services.azureml.net/workspaces/382fad6769bc4a338bcdf681eec04cda/services/6f7d44f9abdd499ca7d67b9431869b4b/execute"
+
+querystring = {"api-version":"2.0","details":"true"}
+
+payload = "{}"
+headers = {
+    'Authorization': "Bearer peZECFxTplFoS/FnBcfaXsCUc0bp/ZhIYo9mYp3doGD1CaCLwEcQu1ptxzlPv+z+TAfMnfNyR5svguP6C/hwhg==",
+    'Content-Type': "application/json",
+    'cache-control': "no-cache",
+    'Postman-Token': "a04e960e-e99e-4b15-9c56-b6c31ab67e9a"
+    }
+
+response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+
+# end code block to update percentile rankings #
