@@ -3,7 +3,7 @@
 
 <%block name="header">
     <div class="card mb-3 prescriber-card">
-        <h3 class="card-header">${ drug }</h3>
+        <h3 class="card-header">${ drug.drugname }</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Opioid Status:</strong> ${ 'Opioid' if drug.isopioid else 'Non-opioid'}</li>
             <li class="list-group-item"><strong>Definition: </strong>${ definition }</li>
@@ -53,7 +53,7 @@
                 <tbody>
                     %for item in drugs:
                     <tr class="table-default">
-                        <th scope="row"><a class="card-link" href="/search/drugProfile/${ item.drugname }">${ item.drugname }</a></th>
+                        <th scope="row"><a class="card-link" href="/search/drugProfile/${ item.drugid }">${ item.drugname }</a></th>
                         %if item.isopioid:
                             <td>Yes</td>
                         %else:

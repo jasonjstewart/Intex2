@@ -15,40 +15,40 @@ def process_request(request, drugid):
     drug = smod.Drugs.objects.get(drugid=drugid)
 
     definition = "No definition available for this drug."
-    # define = drug.drugname
-    # define = define.replace(".", " ")
-    # define = define.lower()
-    # defines = define.split(" ")
-    # defines.reverse()
-    # defines.append(define)
-    # defines.reverse()
-    # done = False
+    define = drug.drugname
+    define = define.replace(".", " ")
+    define = define.lower()
+    defines = define.split(" ")
+    defines.reverse()
+    defines.append(define)
+    defines.reverse()
+    done = False
 
-    # for define in defines:
-    #     if not done:
-    #         url = "https://od-api.oxforddictionaries.com/api/v1/entries/en/" + define
+    for define in defines:
+        if not done:
+            url = "https://od-api.oxforddictionaries.com/api/v1/entries/en/" + define
 
-    #         payload = ""
-    #         headers = {
-    #             'app_id': "edfc361b",
-    #             'app_key': "77733d17a98f8f2928ee550aea04f4ca",
-    #             'cache-control': "no-cache",
-    #             'Postman-Token': "fa4cf12f-6c89-495a-b5bc-8efca550ea55"
-    #         }
+            payload = ""
+            headers = {
+                'app_id': "edfc361b",
+                'app_key': "77733d17a98f8f2928ee550aea04f4ca",
+                'cache-control': "no-cache",
+                'Postman-Token': "fa4cf12f-6c89-495a-b5bc-8efca550ea55"
+            }
 
-    #         response = requests.request("GET", url, data=payload, headers=headers)
+            response = requests.request("GET", url, data=payload, headers=headers)
 
-    #         if response.status_code != 404:
-    #             done = True
-    #             jresponse = json.loads(response.text)
-    #             if 'definitions' in jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]:
-    #                 definition = jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]["definitions"][0]
-    #             elif 'short_definitions' in jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]:
-    #                 definition = jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]["short_definitions"][0]
-    #             elif 'crossReferenceMarkers' in jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]:
-    #                 definition = jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]["crossReferenceMarkers"][0]
-    #             else:
-    #                 done = False
+            if response.status_code != 404:
+                done = True
+                jresponse = json.loads(response.text)
+                if 'definitions' in jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]:
+                    definition = jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]["definitions"][0]
+                elif 'short_definitions' in jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]:
+                    definition = jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]["short_definitions"][0]
+                elif 'crossReferenceMarkers' in jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]:
+                    definition = jresponse['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]["crossReferenceMarkers"][0]
+                else:
+                    done = False
 
 
     # Returns list of drugs prescribed by doctor
@@ -78,8 +78,8 @@ def process_request(request, drugid):
     similar_drugs = jresponse["Results"]["output1"]["value"]["Values"][0]
 
     drugs = []
-    for drug in similar_drugs:
-        drugs.append(smod.Drugs.objects.get(drugname=drug))
+    for d in similar_drugs:
+        drugs.append(smod.Drugs.objects.get(drugname=d))
     print("\n\n\n\n\n\n\n")
     print(type(drugs))
     print(type(definition))
