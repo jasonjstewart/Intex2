@@ -10,15 +10,11 @@
 
         function initViz() {
             var containerDiv = document.getElementById("vizContainer"),
-            url = "https://public.tableau.com/views/TableauINTEXVizzes/Dashboard1?:embed=y&:display_count=yes&publish=yes";
+            url = "https://public.tableau.com/views/TableauINTEXVizzes/OpioidOverview?:embed=y&:display_count=yes&publish=yes";
 
-           
-    
-  
-            viz = new tableau.Viz(containerDiv, url);
+                viz = new tableau.Viz(containerDiv, url);
 }
-           
-      
+                
         </script>
     </head>
     <body onload="initViz();" style="font: verdana;">
