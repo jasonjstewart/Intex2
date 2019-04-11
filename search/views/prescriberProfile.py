@@ -23,7 +23,7 @@ def process_request(request, prescriberid):
         drugs[item.drugname.drugname] = item.qty
         drugs_id[item.drugname.drugname] = item.drugname.drugid
         drugs_is_opioid[item.drugname.drugname] = item.drugname.isopioid
-        average_prescription[item.drugname.drugname] = int(smod.Triple.objects.filter(drugname=item.drugname.drugname).aggregate(Avg('qty'))['qty__avg'])
+        average_prescription[item.drugname.drugname] = int(smod.Triple.objects.filter(drugname=item.drugname).aggregate(Avg('qty'))['qty__avg'])
 
     context = {
         'prescriber': prescriber,
