@@ -1,7 +1,43 @@
 <%inherit file="app_base.htm" />
 <%from search import models as smod %>
+
 <%block name="header">
-    Welcome to Drug Profile Page!!
+<div class="card mb-3 prescriber-card">
+        <h3 class="card-header">${ drug.drugname }</h3>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Opioid Status:</strong> ${ 'Opioid' if drug.isopioid else 'Non-opioid'}</li>
+        </ul>
+        <div class="card-footer text-muted">
+            <a class="card-link" href="/search/drugs/">&#10229; Back to search</a>
+        </div>
+    </div>
+    </br></br>
+    <div class="card mb-3 prescriber-card">
+        <h3 class="card-header">Top 10 Prescribers</h3>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Prescriber</th>
+                        <th scope="col">Quantity Prescribed</th>
+                        <th scope="col">Average Quantity Prescribed By All Prescribers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    %for item in prescribers:
+                    <tr class="table-default">
+                        <th scope="row"><a class="card-link" href="/search/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></th>
+                        <td>${ prescribers[item] }</td>
+                        <td>${ average_prescription }</td>
+                    </tr>
+                    %endfor
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer text-muted">
+            <a class="card-link" href="/search/drugs/">&#10229; Back to search</a>
+        </div>
+    </div>
 </%block>
 <%block name="content">
     

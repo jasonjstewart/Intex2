@@ -15,33 +15,33 @@
     </div>
     </br></br>
     <div class="card mb-3 prescriber-card">
-            <h3 class="card-header">Drugs Prescribed</h3>
-            <div class="card-body">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                        <th scope="col">Drug</th>
-                        <th scope="col">Quantity Prescribed by ${ prescriber.fname }</th>
-                        <th scope="col">Average Quantity Prescribed By All Prescribers</th>
-                        <th scope="col">Opioid Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        %for item in drugs:
-                        <tr class="table-default">
-                            <th scope="row"><a class="card-link" href="/search/drug_profile/${ drugs_id[item] }">${ item }</a></th>
-                            <td>${ drugs[item] }</td>
-                            <td>${ average_prescription[item] }</td>
-                            <td>${ 'Opioid' if drugs_is_opioid[item] else 'Non-opioid' }</td>
-                        </tr>
-                        %endfor
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer text-muted">
-                <a class="card-link" href="/search/prescribers/">&#10229; Back to search</a>
-            </div>
+        <h3 class="card-header">Drugs Prescribed</h3>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Drug</th>
+                    <th scope="col">Quantity Prescribed by ${ prescriber.fname }</th>
+                    <th scope="col">Average Quantity Prescribed By All Prescribers</th>
+                    <th scope="col">Opioid Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    %for item in drugs:
+                    <tr class="table-default">
+                        <th scope="row"><a class="card-link" href="/search/drug_profile/${ drugs_id[item] }">${ item }</a></th>
+                        <td>${ drugs[item] }</td>
+                        <td>${ average_prescription[item] }</td>
+                        <td>${ 'Opioid' if drugs_is_opioid[item] else 'Non-opioid' }</td>
+                    </tr>
+                    %endfor
+                </tbody>
+            </table>
         </div>
+        <div class="card-footer text-muted">
+            <a class="card-link" href="/search/prescribers/">&#10229; Back to search</a>
+        </div>
+    </div>
 
 </%block>
 <%block name="content">
