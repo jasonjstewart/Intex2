@@ -29,7 +29,7 @@
                 <tbody>
                     %for item in drugs:
                     <tr class="table-default">
-                        <th scope="row"><a class="card-link" href="/search/drug_profile/${ drugs_id[item] }">${ item }</a></th>
+                        <th scope="row"><a class="card-link" href="/search/drugProfile/${ drugs_id[item] }">${ item }</a></th>
                         <td>${ drugs[item] }</td>
                         <td>${ average_prescription[item] }</td>
                         <td>${ 'Opioid' if drugs_is_opioid[item] else 'Non-opioid' }</td>

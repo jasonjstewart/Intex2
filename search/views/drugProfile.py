@@ -27,4 +27,4 @@ def process_request(request, drugid):
         'average_prescription': average_prescription,
     }
 
-    return request.dmp.render('drug_profile.html', context)        
+    return request.dmp.render('drugProfile.html', context)        
