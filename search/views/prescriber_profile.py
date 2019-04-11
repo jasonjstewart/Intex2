@@ -8,9 +8,12 @@ from django.db import connection
 from django.utils.html import escape
 
 @view_function
-def process_request(request, prescriberid:smod.Prescriber=None):
+def process_request(request, prescriberid):
+    # Saves prescriber object
+    prescriber = smod.Prescriber.objects.get(prescriberid=prescriberid)
+    
     context = {
-
+        'prescriber': prescriber,
     }
 
     return request.dmp.render('prescriber_profile.html', context)        

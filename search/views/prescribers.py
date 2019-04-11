@@ -15,7 +15,7 @@ def process_request(request):
     # if this is a POST request then process form data
     if request.method == 'POST':
         # Creates instance of form
-        form = SearchProvider(request.POST)
+        form = SearchPrescriber(request.POST)
 
         # Checks validity of Form
         if form.is_valid():
@@ -43,7 +43,7 @@ def process_request(request):
             # Saves query set
             prescribers = query_set
 
-            form = SearchProvider()
+            form = SearchPrescriber()
             #moves to context tuple
             context = {
                 'prescribers': prescribers,
@@ -54,7 +54,7 @@ def process_request(request):
 
     # If GET, renders blank form
     else:
-        form = SearchProvider()
+        form = SearchPrescriber()
 
     context = {
         'form': form,
@@ -63,7 +63,7 @@ def process_request(request):
 
     return request.dmp.render('prescribers.html', context)
 
-class SearchProvider(forms.Form):
+class SearchPrescriber(forms.Form):
     # Creates list of Gender options
     GENDER_CHOICES = [
         ('M', 'Male'),
