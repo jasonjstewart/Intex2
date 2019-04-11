@@ -62,21 +62,18 @@ class SearchDrugs(forms.Form):
     # Creates list of Drugs options
     DRUGS = []
     for item in smod.Drugs.objects.values_list('drugname', flat=True):
-        DRUGS.append(item)
+        DRUGS.append((item, item))
 
-    drugname = forms.CharField(label='Drug Name', max_length=30, required=False, widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2', 'id': 'search-box', 'style': 'margin: 10px 0px 0px 10px;'}))
+    DRUGS.insert(0,('', 'Search all drugs'))
 
-    isopioid = forms.ChoiceField(label='Drug Type', choices=TYPE_CHOICES, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
+    drugname = forms.ChoiceField(label='Drug Name', choices=DRUGS, required=False, widget=forms.Select(attrs={'class': 'custom-select', 'style': 'margin: 10px 0px 0px 10px;'}))
+    isopioid = forms.ChoiceField(label='Drug Type', choices=TYPE_CHOICES, required=False, widget=forms.Select(attrs={'class':'custom-select', 'style': 'margin: 10px 0px 0px 10px; '}))
 
     #Method to validate data
     def clean(self):
         #Save data to clean variable
         self.search_drugname = self.cleaned_data.get('drugname')
         self.search_isopioid = self.cleaned_data.get('isopioid')
-
-        # Ensures they search on at least one value
-        if self.search_drugname == '' and self.search_isopioid == '':
-            raise forms.ValidationError('Please search on at least one value')
 
         # Checks if names are blank
 

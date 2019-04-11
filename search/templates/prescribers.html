@@ -11,24 +11,28 @@
         </form>
     </div>
 
-    <div class="center">
-            <table align="center" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            Prescriber Names
-                        </th>
-                    </tr>
-                </thead>
-                %for item in prescribers:
-                <tr class="table-active">
-                    <td scope="row" class="center">
-                        <a href="/search/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a>
-                    </td>
-                </tr>
-                %endfor
-            </table>
-        </div>
+    <table class="table table-hover" style="width: 70%; margin-left: 15%; margin-right: 15%; ${ 'display: None' if len(prescribers) == 0 else '' }">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Credentials</th>
+                <th scope="col">Location</th>
+                <th scope="col">Specialty</th>
+            </tr>
+        </thead>
+        <tbody>
+            %for item in prescribers:
+            <tr class="table-light">
+                <td class="prescriberTableItem" scope="row"><a href="/search/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></td>                    
+                <td class="prescriberTableItem" scope="row"><a>${ 'Male' if item.gender == 'M' else 'Female' }</a></td>
+                <td class="prescriberTableItem" scope="row"><a>${ item.credentials }</a></td>
+                <td class="prescriberTableItem" scope="row"><a>${ item.state.state }</a></td>
+                <td class="prescriberTableItem" scope="row"><a>${ item.specialty }</a></td>
+            </tr>
+            %endfor
+        </tbody>
+    </table>
 </%block>
 <%block name="content">
     

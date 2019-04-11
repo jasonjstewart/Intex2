@@ -66,9 +66,9 @@ def process_request(request):
 class SearchPrescriber(forms.Form):
     # Creates list of Gender options
     GENDER_CHOICES = [
+        ('', 'All'),
         ('M', 'Male'),
         ('F', 'Female'),
-        ('', 'Either'),
     ]
 
     # Creates list of Specialty options
@@ -80,7 +80,8 @@ class SearchPrescriber(forms.Form):
     specialties_set = set(SPECIALTIES)
     SPECIALTIES.clear()
     SPECIALTIES = list(specialties_set)
-    SPECIALTIES.append(('', 'Search all specialties'))
+    SPECIALTIES.sort()
+    SPECIALTIES.insert(0,('', 'Search all specialties'))
 
     # Creates list of Credentials options
     CREDENTIALS = []
@@ -91,7 +92,8 @@ class SearchPrescriber(forms.Form):
     credentials_set = set(CREDENTIALS)
     CREDENTIALS.clear()
     CREDENTIALS = list(credentials_set)
-    CREDENTIALS.append(('', 'Search all specialties'))
+    CREDENTIALS.sort()
+    CREDENTIALS.insert(0,('','Search all credentials'))
 
     # Creates list of Location options
     LOCATIONS = []
@@ -99,7 +101,7 @@ class SearchPrescriber(forms.Form):
         LOCATIONS.append((item.stateabbrev, item.state))
 
     # Adds option for any state
-    LOCATIONS.append(('', 'Search all locations'))
+    LOCATIONS.insert(0,('', 'Search all locations'))
 
     fname = forms.CharField(label='First Name', max_length=11, required=False, widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2', 'id': 'search-box', 'style': 'margin: 10px 0px 0px 10px;'}))
     lname = forms.CharField(label='Last Name', max_length=11, required=False, widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2', 'id': 'search-box', 'style': 'margin: 10px 0px 0px 10px;'}))
