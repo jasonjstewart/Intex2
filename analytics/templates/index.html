@@ -1,8 +1,31 @@
-<%inherit file="base.htm" />
+<%inherit file="app_base.htm" />
 
 <%block name="content">
-    <div class="content">
-        <h3>Congratulations -- you've successfully created a new DMP app!</h3>
-        <h4 class="utc-time">Current time in UTC: ${ utc_time }</h4>
-    </div>
+<html>
+    <head>
+
+        <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>
+        <script type="text/javascript">
+            var viz, workbook, activeSheet, url;
+
+        function initViz() {
+            var containerDiv = document.getElementById("vizContainer"),
+            url = "https://public.tableau.com/views/TableauINTEXVizzes/Dashboard1?:embed=y&:display_count=yes&publish=yes";
+
+           
+    
+  
+            viz = new tableau.Viz(containerDiv, url);
+}
+           
+      
+        </script>
+    </head>
+    <body onload="initViz();" style="font: verdana;">
+        
+        <div id="vizContainer"></div>
+       
+
+    </body>
+</html>
 </%block>

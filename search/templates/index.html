@@ -1,37 +1,39 @@
 <%inherit file="app_base.htm" />
 <%from search import models as smod %>
 <%block name="header">
-    <h1>Search By</h1>
+    <div class="title text-primary" style="font-size: 50px;">Search By...</h1>
 </%block>
 <%block name="content">
     <div class="card-deck">
-        <div class="card" style="border-width: 0px">
+        <div class="card bg-primary" style="border-width: 0px; border-radius: 20px">
             <div class="card-body"> 
             
                 <i class="fas fa-user-md fa-9x text-danger"></i>
                 <br />
                 <br />
-                <a href="/search/prescribers" class="btn btn-primary btn-lg btn-block" role="button">Prescribers</a>
+
+                <a href="prescribers" class="btn btn-secondary btn-lg btn-block" role="button">Prescribers</a>
 
             </div>
         </div>
-        <div class="card" style="border-width: 0px">
+        <div class="card bg-primary" style="border-width: 0px; border-radius: 20px">
             <div class="card-body">
 
                 <i class="fas fa-prescription-bottle fa-9x text-danger"></i>
                 <br />
                 <br />
                 <a href="/search/drugs" class="btn btn-primary btn-lg btn-block" role="button">Drugs</a>
+                <a href="drugs" class="btn btn-secondary btn-lg btn-block" role="button">Drugs</a>
 
             </div>
         </div>
-        <div class="card" style="border-width: 0px">
+        <div class="card bg-primary" style="border-width: 0px; border-radius: 20px">
             <div class="card-body">
             
                 <i class="fas fa-user-plus fa-9x text-danger"></i>
                 <br />
                 <br />
-                <a href="#" class="btn btn-primary btn-lg btn-block" role="button">Drugs & Prescribers</a>
+                <a href="drugsAndPrescribers" class="btn btn-secondary btn-lg btn-block" role="button">Drugs & Prescribers</a>
                 
             </div>
         </div>

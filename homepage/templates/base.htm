@@ -16,7 +16,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <link id="theme" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css">
+        <link id="theme" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         
         <script>
@@ -34,8 +34,8 @@
             darkMode.onclick = function () { lights("https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css", darkMode, lightMode) };
             lightMode.onclick = function () { lights("https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css", lightMode, darkMode) };
 
-            darkMode.style.display = 'block';
-            lightMode.style.display = 'none';
+            darkMode.style.display = 'none';
+            lightMode.style.display = 'block';
         }
 
         window.onload = initiate;
@@ -64,11 +64,16 @@
                 <li class="nav-item ${ 'active' if request.dmp.app == 'homepage' and request.dmp.page == 'index' else ''}">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item ${ 'active' if request.dmp.app == 'prescribers' else ''}">
-                    <a class="nav-link" href="/search/prescribers">Prescribers</a>
+                <li class="nav-item dropdown ${ 'active' if request.dmp.app == 'prescribers' else ''}">
+                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
+                    <div class="dropdown-menu" aria-labelledby="searchDropdown">
+                        <a class="dropdown-item" href="/search/prescribers">Prescriber</a>
+                        <a class="dropdown-item" href="/search/drugs">Drugs</a>
+                        <a class="dropdown-item" href="/search/prescribersAndDrugs">Prescribers & Drugs</a>
+                    </div>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.app == 'drugs' else ''}">
-                    <a class="nav-link" href="/search/drugs">Drugs</a>
+                    <a class="nav-link" href="/analytics">Analytics</a>
                 </li>
                 <li class="nav-item ${ 'active' if request.dmp.page == 'about' else ''}">
                     <a class="nav-link" href="/about">About</a>
@@ -91,7 +96,6 @@
         <main>
             <div id = content>
                 <%block name="content">
-                    Site content goes here in sub-templates.
                 </%block>
             </div>
         </main>
