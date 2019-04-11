@@ -11,34 +11,25 @@
         </form>
     </div>
 
-    <div class="center">
-        <table align="center" class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Drug ID</th>
-                    <th scope="col">Drug Name</th>
-                    <th scope="col">Drug Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                %for item in drugs:
-                <tr class="table-active">
-                
-                    <td scope="row" class="center">
-                        <a href="/search/drug_profile/${ item.drugid }">${ item.drugid }</a>
-                    </td>
-                    <td scope="row" class="center">
-                        <a href="/search/drug_profile/${ item.drugid }">${ item.drugname }</a>
-                    </td>
-                    
-                    <td scope="row" class="center">
-                        <a href="/search/drug_profile/${ item.drugid }">${ item.isopioid }</a>
-                    </td>
-                </tr>
-                %endfor
-            </tbody>
-        </table>
-        </div>
+    <table class="table table-hover table-primary" style="width: 70%; margin-left: 15%; margin-right: 15%; display: ${ 'None' if len(drugs) == 0 else 'block' }">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Drug ID</th>
+                <th scope="col">Drug Name</th>
+                <th scope="col">Drug Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            %for item in drugs:
+            <tr class="table-active">
+
+                <td scope="row"><a href="/search/drug_profile/${ item.drugid }">${ item.drugid }</a></td>
+                <td scope="row"><a href="/search/drug_profile/${ item.drugid }">${ item.drugname }</a></td>
+                <td scope="row"><a href="/search/drug_profile/${ item.drugid }">${ 'Opioid' if item.isopioid else 'Non-Opioid' }</a></td>
+            </tr>
+            %endfor
+        </tbody>
+    </table>
 </%block>
 <%block name="content">
     

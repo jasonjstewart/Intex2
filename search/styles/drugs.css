@@ -32,22 +32,6 @@ form#search-form {
     border-color: #D1D2D4;
 }
 
-#id_gender {
-    border-color: #D1D2D4;
-}
-
-#id_credentials {
-    border-color: #D1D2D4;
-}
-
-#id_location {
-    border-color: #D1D2D4;
-}
-
-#id_specialty {
-    border-color: #D1D2D4;
-}
-
 #submit_btn {
     margin-top: 25px;
 }
@@ -59,9 +43,5 @@ form#search-form {
 
 ul {
     list-style: none;
-}
-
-td {
-    text-align: left;
 }
 
