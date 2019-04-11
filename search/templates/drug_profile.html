@@ -26,7 +26,7 @@
                 <tbody>
                     %for item in prescribers:
                     <tr class="table-default">
-                        <th scope="row"><a class="card-link" href="/search/prescriber_profile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></th>
+                        <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></th>
                         <td>${ prescribers[item] }</td>
                         <td>${ average_prescription }</td>
                     </tr>
