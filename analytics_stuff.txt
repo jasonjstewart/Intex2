@@ -1,0 +1,109 @@
+# begin execute stored procedure on database code block #
+
+from django.db import connection
+cursor = connection.cursor()
+cursor.execute("select * from ...")
+
+# end execute stored procedure on database code block #
+
+
+
+
+
+# begin similar drugs code block #
+
+import requests, json
+
+url = "https://ussouthcentral.services.azureml.net/workspaces/382fad6769bc4a338bcdf681eec04cda/services/a7487579ef62453cb8f123d2d2b531ab/execute"
+
+querystring = {"api-version": "2.0", "details": "true"}
+
+payload = "{\r\n  \"Inputs\": {\r\n    \"input1\": {\r\n      \"ColumnNames\": [\r\n        \"ID\",\r\n        \"PrescriberID\",\r\n        \"DrugName\",\r\n        \"Qty\"\r\n      ],\r\n      \"Values\": [\r\n        [\r\n          \"0\",\r\n          \"0\",\r\n          \"ABILIFY\",\r\n          \"0\"\r\n        ]\r\n      ]\r\n    }\r\n  },\r\n  \"GlobalParameters\": {}\r\n}"
+headers = {
+    'Authorization': "Bearer frYM5C+NQlZuc1aHZ0GUgj0y3zRY2vIPg7PjTXi+HXrNJGy47NHlAcfG15xnJriVmeMjew7M95pyfKFzaoQ5AA==",
+    'Content-Type': "application/json",
+    'cache-control': "no-cache",
+    'Postman-Token': "aece4052-6be6-4293-a6f4-8a70ee881a81"
+}
+
+response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+
+jresponse = json.loads(response.text)
+
+dot_drugs = jresponse["Results"]["output1"]["value"]["Values"][0]
+
+space_drugs = []
+
+for drug in dot_drugs:
+    print(drug, "\n")
+    drug = drug.replace(".", " ")
+    print(drug, "\n")
+    space_drugs.append(drug)
+
+print(space_drugs) # space_drugs is a python list of the five similar drugs
+
+# end similar drugs code block #
+
+
+
+
+
+# begin update top_worst code block #
+
+import requests
+
+url = "https://ussouthcentral.services.azureml.net/workspaces/382fad6769bc4a338bcdf681eec04cda/services/391a113a4e954e71aafb2b6951d58f03/execute"
+
+querystring = {"api-version":"2.0","details":"true"}
+
+payload = " {}"
+headers = {
+    'Authorization': "Bearer xQtP5rmqobuiQQn68vKEcboRs8518qC/YALsVtFjloxtTfdglHBeBB4iGHYej8n97uktuhBizF8E4PbxRrUQiA==",
+    'Content-Type': "application/json",
+    'cache-control': "no-cache",
+    'Postman-Token': "a5db6de3-2d53-4c47-bc04-13a726aea5d7"
+    }
+
+response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+
+# end update top_worst code block #
+
+
+
+
+
+# begin code block to get opioid-like drugs #
+
+drugs = models.Drugs.objects.filter(isopioid = 1)
+
+drugdrugs = []
+
+for drug in drugs:
+    drugdrugs.append(get_similar_drugs(drug.drugname))
+
+print(drugdrugs)
+
+def get_similar_drugs(drug):
+    import requests, json
+
+    url = "https://ussouthcentral.services.azureml.net/workspaces/382fad6769bc4a338bcdf681eec04cda/services/a7487579ef62453cb8f123d2d2b531ab/execute"
+
+    querystring = {"api-version": "2.0", "details": "true"}
+
+    payload = "{\r\n  \"Inputs\": {\r\n    \"input1\": {\r\n      \"ColumnNames\": [\r\n        \"ID\",\r\n        \"PrescriberID\",\r\n        \"DrugName\",\r\n        \"Qty\"\r\n      ],\r\n      \"Values\": [\r\n        [\r\n          \"0\",\r\n          \"0\",\r\n          \"" + drug + "\",\r\n          \"0\"\r\n        ]\r\n      ]\r\n    }\r\n  },\r\n  \"GlobalParameters\": {}\r\n}"
+    headers = {
+        'Authorization': "Bearer frYM5C+NQlZuc1aHZ0GUgj0y3zRY2vIPg7PjTXi+HXrNJGy47NHlAcfG15xnJriVmeMjew7M95pyfKFzaoQ5AA==",
+        'Content-Type': "application/json",
+        'cache-control': "no-cache",
+        'Postman-Token': "aece4052-6be6-4293-a6f4-8a70ee881a81"
+    }
+
+    response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+
+    jresponse = json.loads(response.text)
+
+    dot_drugs = jresponse["Results"]["output1"]["value"]["Values"][0]
+
+    return dot_drugs
+
+# end code block to get opioid-like drugs #
