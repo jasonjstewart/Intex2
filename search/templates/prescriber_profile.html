@@ -23,6 +23,7 @@
                         <th scope="col">Drug</th>
                         <th scope="col">Quantity Prescribed by ${ prescriber.fname }</th>
                         <th scope="col">Average Quantity Prescribed By All Prescribers</th>
+                        <th scope="col">Opioid Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,7 @@
                             <th scope="row"><a class="card-link" href="/search/drug_profile/${ drugs_id[item] }">${ item }</a></th>
                             <td>${ drugs[item] }</td>
                             <td>${ average_prescription[item] }</td>
+                            <td>${ 'Opioid' if drugs_is_opioid[item] else 'Non-opioid' }</td>
                         </tr>
                         %endfor
                     </tbody>
