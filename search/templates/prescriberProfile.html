@@ -49,6 +49,32 @@
             <a class="card-link" href="/search/prescribers/">&#10229; Back to search</a>
         </div>
     </div>
+    </br></br>
+    <div class="card mb-3 prescriber-card">
+        <h3 class="card-header">Similar Doctors</h3>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">PrescriberID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Credentials</th>
+                    <th scope="col">Specialty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    %for doc in docs:
+                    <tr class="table-default">
+                        <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ doc.prescriberid }">${ doc.prescriberid }</a></th>
+                        <td>${ doc. fname } ${ doc.lname }</td>
+                        <td>${ doc.credentials }</td>
+                        <td>${ doc.specialty }</td>
+                    </tr>
+                    %endfor
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </%block>
 <%block name="content">
