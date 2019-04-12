@@ -11,7 +11,8 @@ from django.db.models import Q
 @view_function
 def process_request(request):
     # Creates empty prescribers variable
-    prescribers = []
+    triple_query_set = []
+    dict_prescribers = {}
 
     # if this is a POST request then process form data
     if request.method == 'POST':
@@ -43,7 +44,28 @@ def process_request(request):
 
             # Creates list of requested prescriber IDs
             list_prescribers = prescriber_query_set.values_list('prescriberid', flat=True)
-            print(list_prescribers)
+
+            # # Creates Dictionary of requested prescriber IDs for use in the template
+            # for item in list_prescribers:
+            #     dict_prescribers[item] = (smod.Prescriber.objects.get(prescriberid=item))
+            
+            # Checks drug search params
+            if form.search_drugname != '':
+                drug_query_set = smod.Drugs.objects.filter(drugname__exact=form.search_drugname)
+            else:
+                drug_query_set = smod.Drugs.objects.all()
+            
+            if form.search_isopioid != '':
+                drug_query_set = drug_query_set.filter(isopioid__exact=form.search_isopioid)
+
+            # Creates list of requested drug IDs
+            list_drugs = drug_query_set.values_list('drugname', flat=True)
+
+            # Grabs set of request drugs and prescribers
+            triple_query_set = smod.Triple.objects.filter(Q(prescriberid__in=list_prescribers) & Q(drugname__in=list_drugs))
+
+            print(triple_query_set)
+
 
             # if form.search_drugname != '':
             #     for prescriber in prescriber_query_set:
@@ -52,11 +74,12 @@ def process_request(request):
                             
 
             # Saves query set
-            #prescribers = prescriber_query_set
+            prescribers = prescriber_query_set
 
             form = SearchPrescriber()
             #moves to context tuple
             context = {
+                'triple_query_set': triple_query_set,
                 'form': form,
             }
 
@@ -68,7 +91,8 @@ def process_request(request):
 
     context = {
         'form': form,
-        'prescribers': prescribers,
+        'triple_query_set': triple_query_set,
+        'dict_prescribers': dict_prescribers,
     }
 
     return request.dmp.render('drugsAndPrescribers.html', context)
