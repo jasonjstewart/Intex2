@@ -129,8 +129,8 @@ class SearchPrescriber(forms.Form):
         self.search_specialty = self.cleaned_data.get('specialty')
 
         # Ensures they search on at least one value
-        if self.search_fname == '' and self.search_lname == '' and self.search_gender == '' and self.search_credentials == '' and self.search_location == '' and self.search_specialty == '':
-            raise forms.ValidationError('Please search on at least one value')
+        if self.search_fname == '' and self.search_lname == '' and self.search_credentials == '' and self.search_location == '' and self.search_specialty == '':
+            raise forms.ValidationError('Please search on at least one value other than gender')
 
         # Checks if names are blank
 
