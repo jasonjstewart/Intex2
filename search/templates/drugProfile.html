@@ -2,10 +2,11 @@
 <%from search import models as smod %>
 
 <%block name="header">
-<div class="card mb-3 prescriber-card">
+    <div class="card mb-3 prescriber-card">
         <h3 class="card-header">${ drug.drugname }</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Opioid Status:</strong> ${ 'Opioid' if drug.isopioid else 'Non-opioid'}</li>
+            <li class="list-group-item"><strong>Definition: </strong>${ definition }</li>
         </ul>
         <div class="card-footer text-muted">
             <a class="card-link" href="/search/drugs/">&#10229; Back to search</a>
@@ -26,7 +27,13 @@
                 <tbody>
                     %for item in prescribers:
                     <tr class="table-default">
-                        <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></th>
+
+                        %if (request.user.user_type == 2):
+                            <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ item.prescriberid }">${ item.prescriberid }</a></th>
+                        %else:
+                            <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ item.prescriberid }">${ item.fname + ' ' + item.lname }</a></th>
+                        %endif
+                        
                         <td>${ prescribers[item] }</td>
                         <td>${ average_prescription }</td>
                     </tr>
@@ -38,6 +45,31 @@
             <a class="card-link" href="/search/drugs/">&#10229; Back to search</a>
         </div>
     </div>
+    </br></br>
+    <div class="card mb-3 prescriber-card">
+        <h3 class="card-header">Similar Drugs</h3>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Drug Name</th>
+                        <th scope="col">Opioid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    %for item in drugs:
+                    <tr class="table-default">
+                        <th scope="row"><a class="card-link" href="/search/drugProfile/${ item.drugid }">${ item.drugname }</a></th>
+                        %if item.isopioid:
+                            <td>Yes</td>
+                        %else:
+                            <td>No</td>
+                        %endif
+                    </tr>
+                    %endfor
+                </tbody>
+            </table>
+        </div>
 </%block>
 <%block name="content">
     

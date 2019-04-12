@@ -2,12 +2,20 @@
 <%from search import models as smod %>
 <%block name="header">
     <div class="card mb-3 prescriber-card">
-        <h3 class="card-header">${ prescriber.fname + ' ' + prescriber.lname }</h3>
+
+
+        %if (request.user.user_type == 2):
+            <h3 class="card-header">${ prescriber.prescriberid }</h3>
+        %else:
+            <h3 class="card-header">${ prescriber.fname + ' ' + prescriber.lname }</h3>
+        %endif
+
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Gender:</strong> ${ 'Male' if prescriber.gender == 'M' else 'Female'}</li>
             <li class="list-group-item"><strong>Credentials:</strong> ${ prescriber.credentials }</li>
             <li class="list-group-item"><strong>Location:</strong> ${ prescriber.state.state }</li>
             <li class="list-group-item"><strong>Specialty:</strong> ${ prescriber.specialty }</li>
+            <li class="list-group-item ${'text-danger' if prescriber.percentile > 80 else 'text-default'}"><strong>Opioid Risk Score:</strong> ${ prescriber.percentile }</li>
         </ul>
         <div class="card-footer text-muted">
             <a class="card-link" href="/search/prescribers/">&#10229; Back to search</a>
@@ -21,14 +29,14 @@
                 <thead>
                     <tr>
                     <th scope="col">Drug</th>
-                    <th scope="col">Quantity Prescribed by ${ prescriber.fname }</th>
+                    <th scope="col">Quantity Prescribed by ${ prescriber.prescriberid if request.user.user_type == 2 else prescriber.fname }</th>
                     <th scope="col">Average Quantity Prescribed By All Prescribers</th>
                     <th scope="col">Opioid Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     %for item in drugs:
-                    <tr class="table-default">
+                    <tr class="${'table-danger' if (drugs[item] > average_prescription[item] and drugs_is_opioid[item] ) else 'table-default'} ">
                         <th scope="row"><a class="card-link" href="/search/drugProfile/${ drugs_id[item] }">${ item }</a></th>
                         <td>${ drugs[item] }</td>
                         <td>${ average_prescription[item] }</td>
@@ -42,8 +50,65 @@
             <a class="card-link" href="/search/prescribers/">&#10229; Back to search</a>
         </div>
     </div>
+    </br></br>
+    <div class="card mb-3 prescriber-card">
+        <h3 class="card-header">Similar Doctors</h3>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">PrescriberID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Credentials</th>
+                    <th scope="col">Specialty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    %for doc in docs:
+                    <tr class="table-default">
+                        <th scope="row"><a class="card-link" href="/search/prescriberProfile/${ doc.prescriberid }">${ doc.prescriberid }</a></th>
+                        <td>${ doc. fname } ${ doc.lname }</td>
+                        <td>${ doc.credentials }</td>
+                        <td>${ doc.specialty }</td>
+                    </tr>
+                    %endfor
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </%block>
 <%block name="content">
-    
+    <style>
+        .up{bottom:300px;}
+        .down{bottom:0px;}
+    </style>
+    <script>
+        $(function() {
+            var containerDiv, viz;
+            var containerDiv = document.getElementById("vizContainer"),
+            url = "https://public.tableau.com/views/PrescriberPie/OpioidBalance?:embed=y&:display_count=yes&publish=yes",
+            options = {
+                width: 400,
+                height: 300,
+                "PrescriberID": "${ prescriber.prescriberid }",
+                hideTabs: true,
+                onFirstInteractive: function () {
+                    console.log("Run this code when the viz has finished loading.");
+                }
+            };
+            var viz = new tableau.Viz(containerDiv, url, options);
+            $('#dropper').click(function (){
+                var src = ($('#dropper').attr('src') === '/static/search/media/up.png')
+                    ? '/static/search/media/down.png'
+                    : '/static/search/media/up.png';
+                $('#dropper').attr('src', src);
+                $('#dropper').toggleClass('up');
+                $('#dropper').toggleClass('down');
+                $('#vizContainer').toggle();
+            });
+       });
+    </script>
+    <img id="dropper" class="up" style="position:fixed;right:0;" src="/static/search/media/down.png"/></img>
+    <div id="vizContainer" style="position:fixed;bottom:0;right:0;"></div>
 </%block>

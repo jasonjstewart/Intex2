@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'account',
     'search',
     'analytics',
+    'django_mfa',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_mfa.middleware.MfaMiddleware'
 ]
 
 ROOT_URLCONF = 'Intex.urls'

@@ -327,3 +327,11 @@ class PrescriberPercentile(models.Model):
     class Meta:
         managed = False
         db_table = 'prescriber_percentile'
+
+class Averages(models.Model):
+    drugname = models.CharField(max_length=50, blank=True, null=True)
+    avg = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'averages'

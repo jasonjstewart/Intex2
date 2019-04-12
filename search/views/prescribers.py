@@ -50,7 +50,11 @@ def process_request(request):
                 'form': form,
             }
 
-            return request.dmp.render('prescribers.html', context)
+            if request.user.is_authenticated:
+                return request.dmp.render('prescribers.html', context)
+
+            else:
+                return HttpResponseRedirect('/account/')
 
     # If GET, renders blank form
     else:
@@ -61,7 +65,11 @@ def process_request(request):
         'prescribers': prescribers,
     }
 
-    return request.dmp.render('prescribers.html', context)
+    if request.user.is_authenticated:
+        return request.dmp.render('prescribers.html', context)
+
+    else:
+        return HttpResponseRedirect('/account/')
 
 class SearchPrescriber(forms.Form):
     # Creates list of Gender options
