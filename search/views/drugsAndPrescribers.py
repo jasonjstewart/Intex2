@@ -64,14 +64,7 @@ def process_request(request):
             # Grabs set of request drugs and prescribers
             triple_query_set = smod.Triple.objects.filter(Q(prescriberid__in=list_prescribers) & Q(drugname__in=list_drugs))
 
-            print(triple_query_set)
-
-
-            # if form.search_drugname != '':
-            #     for prescriber in prescriber_query_set:
-            #         for item in smod.Triple.objects.filter(drugname=form.search_drugname):
-            #             if prescriber.prescriberid == item.prescriberid:
-                            
+            print(triple_query_set)                            
 
             # Saves query set
             prescribers = prescriber_query_set
@@ -173,7 +166,7 @@ class SearchPrescriber(forms.Form):
         self.search_isopioid = self.cleaned_data.get('isopioid')
 
         # Ensures they search on at least one value
-        if self.search_fname == '' and self.search_lname == '' and self.search_gender == '' and self.search_credentials == '' and self.search_location == '' and self.search_specialty == '' and self.drugname == '' and self.isopioid == '':
+        if self.search_fname == '' and self.search_lname == '' and self.search_gender == '' and self.search_credentials == '' and self.search_location == '' and self.search_specialty == '' and self.search_drugname == '' and self.search_isopioid == '':
             raise forms.ValidationError('Please search on at least one value')
 
         # Checks if names are blank
