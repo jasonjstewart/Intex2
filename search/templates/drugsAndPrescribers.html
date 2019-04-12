@@ -23,8 +23,8 @@
         <tbody>
             %for item in triple_query_set:
             <tr class="table-light">
-                <td class="prescriberTableItem" scope="row"><a href="/search/prescriberProfile/${ item.prescriberid }">${ item.prescriberid } ${item}</a></td>                    
-                <td class="prescriberTableItem" scope="row"><a href="/search/drugProfile/">${ item.drugname.drugname }</a></td>
+                <td class="prescriberTableItem" scope="row"><a href="/search/prescriberProfile/${ item.prescriberid.prescriberid }">${ item.prescriberid }</a></td>                    
+                <td class="prescriberTableItem" scope="row"><a href="/search/drugProfile/${ item.drugname.drugid }">${ item.drugname.drugname }</a></td>
                 <td class="prescriberTableItem" scope="row"><a>${ item.qty }</a></td>
             </tr>
             %endfor
