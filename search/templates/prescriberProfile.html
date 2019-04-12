@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                     %for item in drugs:
-                    <tr class="${'table-danger' if drugs[item] > average_prescription[item] else 'table-default'}">
+                    <tr class="${'table-danger' if (drugs[item] > average_prescription[item] and drugs_is_opioid[item] ) else 'table-default'}">
                         <th scope="row"><a class="card-link" href="/search/drugProfile/${ drugs_id[item] }">${ item }</a></th>
                         <td>${ drugs[item] }</td>
                         <td>${ average_prescription[item] }</td>
