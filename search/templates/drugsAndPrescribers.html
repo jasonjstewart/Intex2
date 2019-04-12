@@ -1,0 +1,36 @@
+<%inherit file="app_base.htm" />
+<%from search import models as smod %>
+
+<%block name="header">
+    <div class="form-box" style="${ 'display: none;' if False else '' }">
+        <div class="head bg-primary">Search By Drug and Prescriber</div>
+        <form id="search-form" class="form-inline my-2 my-lg-0" method="POST">
+                <table align="center">
+                    ${ form.as_table() }
+                </table>
+            <input id="submit_btn" type="submit" class="btn btn-primary btn-block btn-lg" value="Search" />
+        </form>
+    </div>
+
+    <table class="table table-hover" style="width: 70%; margin-left: 15%; margin-right: 15%; ${ 'display: None' if False else '' }">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Drug</th>
+                <th scope="col">Quantity Prescribed by </th>
+            </tr>
+        </thead>
+        <tbody>
+            %for item in triple_query_set:
+            <tr class="table-light">
+                <td class="prescriberTableItem" scope="row"><a href="/search/prescriberProfile/${ item.prescriberid.prescriberid }">${ item.prescriberid }</a></td>                    
+                <td class="prescriberTableItem" scope="row"><a href="/search/drugProfile/${ item.drugname.drugid }">${ item.drugname.drugname }</a></td>
+                <td class="prescriberTableItem" scope="row"><a>${ item.qty }</a></td>
+            </tr>
+            %endfor
+        </tbody>
+    </table>
+</%block>
+<%block name="content">
+    
+</%block>
