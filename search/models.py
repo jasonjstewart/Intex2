@@ -335,3 +335,15 @@ class Averages(models.Model):
     class Meta:
         managed = False
         db_table = 'averages'
+
+
+class SpecialtyDrugBundles(models.Model):
+    rank = models.IntegerField(db_column='Rank')  # Field name made lowercase.
+    specialty = models.CharField(db_index = True, db_column='Specialty', max_length=62, blank=True, null=True)  # Field name made lowercase.
+    drugname = models.CharField(db_index = True, db_column='DrugName', primary_key=True, max_length=50)  # Field name made lowercase.
+    isopioid = models.BooleanField(db_index = True, db_column='IsOpioid', blank=True, null=True)  # Field name made lowercase.
+    totalprescribed = models.IntegerField(db_column='Total Prescribed')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'SpecialtyDrugBundles'
