@@ -29,7 +29,7 @@
                 <thead>
                     <tr>
                     <th scope="col">Drug</th>
-                    <th scope="col">Quantity Prescribed by ${ prescriber.fname }</th>
+                    <th scope="col">Quantity Prescribed by ${ prescriber.prescriberid if request.user.user_type == 2 else prescriber.fname }</th>
                     <th scope="col">Average Quantity Prescribed By All Prescribers</th>
                     <th scope="col">Opioid Status</th>
                     </tr>

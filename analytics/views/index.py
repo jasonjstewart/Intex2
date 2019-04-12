@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 @view_function
 def process_request(request):
-    if request.user.is_authenticated and request.user.user_type > 1:
+    if request.user.is_authenticated and request.user.user_type > 2:
         return request.dmp.render('index.html')
 
     else:
